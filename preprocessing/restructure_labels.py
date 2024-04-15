@@ -7,6 +7,7 @@ labels if the surrounding intervals have consistent labels.
 
 Input: Directory with raw text files with sleep stage labels. 
 Output: Directory with CSV files with cleaned and standardized sleep stage data.
+
 Behavior: The script reads each text file and extracts lines after "Sleep Stage" is found. It then cleans 
 and formats the data according to the column structure. Time stamps are standardized to datetime objects, 
 and data is checked for continuous 30-second intervals. Missing labels are inferred where possible, and final 
