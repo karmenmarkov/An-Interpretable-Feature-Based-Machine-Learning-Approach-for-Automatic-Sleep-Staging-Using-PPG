@@ -4,6 +4,9 @@ subsequent analysis. It aligns the start times of the PPG data and label data, t
 if necessary, and constructs a matrix representing 30-second epochs of PPG data for each sleep stage label. It handles
 any misalignments and reports files that could not be processed.
 
+Input: Directories with CSV files with labels and PPG data.
+Output: Directory with CSV files with joined labels and PPG data.
+
 Assumptions:
 - PPG data is saved as '_ppg.csv'.
 - Label data is saved as '_labels.csv'.
