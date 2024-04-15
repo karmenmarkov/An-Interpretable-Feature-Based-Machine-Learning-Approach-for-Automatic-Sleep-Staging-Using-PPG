@@ -7,6 +7,9 @@ analysis.
 
 The script is set up to process multiple files within a directory and will output the preprocessed data into separate CSV files.
 
+Input: Directory with CSV files with PPG data.
+Output: Directory with CSV files with filtered (and normalized) PPG data.
+
 Parameters:
 - fs: The sampling frequency of the PPG data (default is 128 Hz).
 - epoch_duration: Duration of each epoch in seconds (default is 30 seconds).
