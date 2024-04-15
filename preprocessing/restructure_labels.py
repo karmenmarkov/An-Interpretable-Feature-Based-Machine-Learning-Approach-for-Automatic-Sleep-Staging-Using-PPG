@@ -1,31 +1,18 @@
-# Overview:
-# This script processes raw sleep stage label files, performs data cleaning and formatting, and then outputs the processed data to CSV files. The steps include reading text files, filtering necessary data, standardizing time formats, ensuring continuous 30-second intervals, and mapping sleep stage labels to numeric codes.
+"""
+This script processes raw sleep stage label files, performs data cleaning and formatting, and then outputs the 
+processed data to CSV files. The steps include reading text files, filtering necessary data, standardizing time 
+formats, ensuring continuous 30-second intervals, and mapping sleep stage labels to numeric codes. The script 
+assumes the recording may span midnight and adjusts time calculations accordingly. The script infers missing 
+labels if the surrounding intervals have consistent labels.
 
-# Purpose:
-# To preprocess raw sleep stage label files by extracting necessary information, standardizing the time format, ensuring a label is present for every 30-second interval, and converting string labels to a numeric system suitable for further analysis.
-
-# Inputs:
-# Raw text files with sleep stage labels, located in a specified folder. Each file must follow a known format that includes time stamps and event labels.
-
-# Outputs:
-# CSV files with cleaned and standardized sleep stage data. Each file contains timestamps and corresponding sleep stage labels converted to numeric codes, along with additional columns for different sleep stage categorizations (binary sleep/wake, 3 stages, 4 stages, and 5 stages).
-
-# Methodology:
-# The script reads each text file and extracts lines after "Sleep Stage" is found. It then cleans and formats the data according to the column structure. Time stamps are standardized to datetime objects, and data is checked for continuous 30-second intervals. Missing labels are inferred where possible, and final labels are converted to numeric codes. Several categorizations of sleep stages are added before saving the processed data as CSV files.
-
-# Dependencies:
-# - os: For interacting with the file system.
-# - csv: For writing output files in CSV format.
-# - pprint: For clean data output (if used).
-# - pandas: For dataframe manipulation and datetime handling.
-# - datetime: For time calculations, especially around midnight.
-
-# Additional Notes:
-# - The script assumes the recording may span midnight and adjusts time calculations accordingly.
-# - The script infers missing labels if the surrounding intervals have consistent labels.
-# - The output includes a header with the length of the recording.
-# - The file names for the outputs are based on the input file names with '_labels' appended.
-
+Input: Directory with raw text files with sleep stage labels. 
+Output: Directory with CSV files with cleaned and standardized sleep stage data.
+Behavior: The script reads each text file and extracts lines after "Sleep Stage" is found. It then cleans 
+and formats the data according to the column structure. Time stamps are standardized to datetime objects, 
+and data is checked for continuous 30-second intervals. Missing labels are inferred where possible, and final 
+labels are converted to numeric codes. Several categorizations of sleep stages are added before saving the 
+processed data as CSV files.
+"""
 
 import os
 import csv
