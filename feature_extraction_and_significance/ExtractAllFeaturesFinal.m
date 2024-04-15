@@ -176,7 +176,7 @@ for fileIdx = 1:length(dataFiles)
             featuresFailedForFile{end+1} = 'extractPPGEntropyFeatures';
         end
 
-        % 12. Extract the RR and DET features
+        % 13. Extract the RR and DET features
         try
             features_table13 = extractPPGRRandDET(data, fs);
             merged_features_table = [merged_features_table, features_table13];
@@ -185,7 +185,7 @@ for fileIdx = 1:length(dataFiles)
             featuresFailedForFile{end+1} = 'extractPPGRRandDETFeatures';
         end
 
-        % 13. Extract PPI detrended fluctuation analysis measures and
+        % 14. Extract PPG Lyapunov Exponent, Higuchi and Katz fractal dimension measures features.
         % related features
         try
             features_table14 = extractPPGLcHfdKfdFeatures(data, fs);
