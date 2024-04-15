@@ -3,6 +3,9 @@ This script inverts PPG signal data from CSV files. It maintains the header info
 into new CSV files. It skips specific files based on filename patterns and is configured to work with PPG data that was 
 previously inverted during processing.
 
+Input: Directory with CSV files with PPG data.
+Output: Directory with CSV files with inverted PPG data.
+
 Usage: Run the script in a Python environment where the necessary libraries are installed. Set the 'directory_path' 
 to the folder containing the original PPG CSV files and 'inverted_directory_path' to the destination folder for the inverted files.
 """
