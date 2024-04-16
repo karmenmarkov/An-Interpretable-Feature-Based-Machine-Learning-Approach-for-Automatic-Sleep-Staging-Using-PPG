@@ -35,8 +35,8 @@ We utilize the CAP Sleep Database available on PhysioNet (https://physionet.org/
 
 ## Repository Structure
 This repository is organized into three main sections, each with a dedicated README file that provides detailed instructions and explanations:
-* **Preprocessing**: Scripts for data cleaning, signal inversion, and synchronization of PPG signals with sleep stage labels. Read more
-* **Feature Extraction and Significance**: Techniques for deriving significant features from the PPG data and evaluating their relevance to sleep stages. Read more
+* **Preprocessing**: Scripts for data cleaning, signal inversion, and synchronization of PPG signals with sleep stage labels. [Read more](https://github.com/kmarkoveth/PPG/tree/main/preprocessing)
+* **Feature Extraction and Significance**: Techniques for deriving significant features from the PPG data and evaluating their relevance to sleep stages. [Read more](https://github.com/kmarkoveth/PPG/tree/main/feature_extraction_and_significance)
 * **Model Training**: Application of machine learning models to classify sleep stages based on extracted features. Read more
 
 ## Goals and Objectives
