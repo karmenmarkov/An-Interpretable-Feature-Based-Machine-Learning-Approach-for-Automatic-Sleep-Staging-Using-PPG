@@ -1,4 +1,8 @@
-# [restructure_labels.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/restructure_labels.py)
+# Preprocessing Steps
+....
+
+## Steps
+### [restructure_labels.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/restructure_labels.py)
 * **Purpose**: Transforms sleep stage labels from raw ’.txt’ files into structured ’.csv’ format suitable for analysis. 
 * **Inputs**: Directory with '.txt' files of timestamped sleep stage events.
 * **Outputs**: Directory with '.csv' files containing numeric-coded sleep stage data and categorizations (binary sleep/wake, 3 stages, 4 stages, and 5 stages).
@@ -8,7 +12,7 @@
   * Ensures continuous 30-second epochs.
   * Converts descriptions to numeric codes and categorizes stages.
 
-# [restructure_ppg_data.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/restructure_ppg_data.py)
+### [restructure_ppg_data.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/restructure_ppg_data.py)
 * **Purpose**: Extracts and saves PPG signals from '.edf' files in '.csv' format.
 * **Inputs**: Directory with '.edf' files containing PPG data.
 * **Outputs**: Directory with '.csv' files representing PPG signals and header information.
@@ -19,7 +23,7 @@
   *	Writes signal and headers into '.csv' files.
 *	**Failure Handling**: Logs unprocessable files missing PLETH signals or encountering read errors.
 
-# [invert_ppg.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/invert_ppg.py)
+### [invert_ppg.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/invert_ppg.py)
 * **Purpose**: Corrects previously inverted PPG signal data for analysis.
 * **Inputs**: Directory with '.csv' files of PPG data excluding specified file names.
 * **Outputs**: Directory with inverted PPG data in '.csv' format.
@@ -32,7 +36,7 @@
   * Review skipped file names and add or remove conditions as needed.
   * The script outputs to the console the path to each inverted file after processing.
 
-# [join_data.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/join_data.py)
+### [join_data.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/join_data.py)
 * **Purpose**: Prepares a dataset by merging PPG signal data with corresponding sleep stage labels.
 * **Inputs**: Directory with '.csv' files of PPG data and sleep stage labels.
 * **Outputs**: Directory with labeled PPG epochs in '.csv' files named after the original PPG files.
@@ -42,7 +46,7 @@
   * Outputs combined data into specified directory.
 * **Notes**: Assumes consistent sampling rate and comparable start times.
 
-# [filtering_and_preprocessing.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/filtering_and_preprocessing.py)
+### [filtering_and_preprocessing.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/filtering_and_preprocessing.py)
 * **Purpose**: Preprocesses raw PPG signal data for sleep stage analysis using various normalization methods.
 * **Inputs**: Directory with labeled PPG data in '.csv' files.
 * **Outputs**: Directory with processed data segregated by normalization method into '.csv' files with PPG epochs and sleep stage labels.
