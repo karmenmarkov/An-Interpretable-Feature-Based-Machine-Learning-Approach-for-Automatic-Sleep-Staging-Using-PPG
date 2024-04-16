@@ -11,7 +11,7 @@ function featuresTable = extractPPIdfaFeatures(data, detected_peaks, fs)
     %
     % Dependencies:
     %   - Higuchi_FD: Function to calculate the Higuchi Fractal Dimension.
-    %   - dfaOverall, dfaShortLong, progressive_dfa, windowed_dfa, DMA_avg: Functions to perform
+    %   - dfaOverall, dfaShortLong, dfaProgressive, dfaWindowed, dmaAvg: Functions to perform
     %     different types of DFA analyses on the PPI data.
     %
     % References:
@@ -71,7 +71,7 @@ function featuresTable = extractPPIdfaFeatures(data, detected_peaks, fs)
     
         %PPI_DMA
         scales = unique(floor(logspace(log10(4), log10(length(PPI)/4), 20))); % Define scales based on the characteristics of this epoch's PPI
-        PPI_DMA = DMA_avg(PPI,scales);
+        PPI_DMA = dmaAvg(PPI,scales);
     
         % Assign the calculated features for the current epoch to the preallocated matrix
         features_all_epochs(epoch,:) = [PPI_HFD,PPI_DFA,PPI_DFA_short_exponent,PPI_DFA_long_exponent,PPI_PDFA, PPI_WDFA, PPI_DMA];
