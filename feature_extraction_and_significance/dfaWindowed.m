@@ -1,5 +1,5 @@
-function PPI_WDFA = windowed_dfa(PPI, window_size)
-    % windowed_dfa calculates the Detrended Fluctuation Analysis (DFA) exponent in a sliding window approach across a PPI series.
+function PPI_WDFA = dfaWindowed(PPI, window_size)
+    % dfaWindowed calculates the Detrended Fluctuation Analysis (DFA) exponent in a sliding window approach across a PPI series.
     % This function provides insights into how DFA exponents change over the course of the PPI series, reflecting non-stationarities.
     %
     % Inputs:
