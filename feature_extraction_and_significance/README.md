@@ -60,8 +60,8 @@
   *	Computes regularity ratios to assess the consistency of PPG signal patterns.
   *	Compiles a comprehensive feature set, including averages and standard deviations, for sleep phase analysis.
 *	**Dependencies**:
-   *	Functions for peak and onset detection must be run prior to this analysis to provide `detected_peaks` and `detected_onsets`.
-   *	MATLAB's Signal Processing Toolbox for functions like `trapz` used in integrating areas under the curve.
+  *	*	Functions for peak and onset detection must be run prior to this analysis to provide `detected_peaks` and `detected_onsets`.
+  *	*	MATLAB's Signal Processing Toolbox for functions like `trapz` used in integrating areas under the curve.
 
 ### [detectABEpeaks.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/detectABEpeaks.m)
 *	**Purpose**: Automatically detects the a, b, and e points in the PPG waveform for each epoch. These points correspond to key physiological features in the blood volume pulse waveform: a_peaks (systolic upstroke), b_peaks (systolic peak), and e_peaks (early diastolic point).
