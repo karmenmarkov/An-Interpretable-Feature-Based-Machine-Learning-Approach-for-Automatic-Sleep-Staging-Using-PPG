@@ -1,5 +1,6 @@
 # Automatic Sleep Staging from Photoplethysmography (PPG) Data
 
+
 ## Project Overview
 This project aims to develop an interpretable, feature-based classifier for automatic sleep staging using Photoplethysmography (PPG) data. Unlike prevalent neural network approaches that offer high accuracy but limited interpretability, this project focuses on using traditional machine learning models that provide clear insights into the features influencing sleep stage classification. This approach enhances the clinical applicability of PPG-based sleep analysis in wearable technologies, making it a valuable tool for both research and practical applications in sleep medicine.
 
