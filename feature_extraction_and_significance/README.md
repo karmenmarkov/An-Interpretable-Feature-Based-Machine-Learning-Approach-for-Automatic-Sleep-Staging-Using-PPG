@@ -60,31 +60,31 @@
   *	Computes regularity ratios to assess the consistency of PPG signal patterns.
   *	Compiles a comprehensive feature set, including averages and standard deviations, for sleep phase analysis.
 *	**Dependencies**:
-  *	Functions for peak and onset detection must be run prior to this analysis to provide `detected_peaks` and `detected_onsets`.
-  *	MATLAB's Signal Processing Toolbox for functions like `trapz` used in integrating areas under the curve.
+   *	Functions for peak and onset detection must be run prior to this analysis to provide `detected_peaks` and `detected_onsets`.
+   *	MATLAB's Signal Processing Toolbox for functions like `trapz` used in integrating areas under the curve.
 
 ### [detectABEpeaks.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/detectABEpeaks.m)
 *	**Purpose**: Automatically detects the a, b, and e points in the PPG waveform for each epoch. These points correspond to key physiological features in the blood volume pulse waveform: a_peaks (systolic upstroke), b_peaks (systolic peak), and e_peaks (early diastolic point).
 *	**Inputs**:
-  *	`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  *	`detected_peaks` - Cell array containing detected peaks for each epoch
-  *	`detected_onsets` - Cell array containing detected onsets for each epoch.
-  *	`fs` - Sampling rate of the PPG signal.
+   *	`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+   *	`detected_peaks` - Cell array containing detected peaks for each epoch
+   *	`detected_onsets` - Cell array containing detected onsets for each epoch.
+   *	`fs` - Sampling rate of the PPG signal.
 *	**Outputs**:
-  *	`a_peaks_epochs` - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
-  *	`b_peaks_epochs` - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
-  *	`e_peaks_epochs` - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
+   *	`a_peaks_epochs` - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
+   *	`b_peaks_epochs` - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
+   *	`e_peaks_epochs` - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
 *	**Process**:
-  *	Calculates the first and second derivatives of the PPG signal to highlight changes in the waveform's slope.
-  *	**a Point Detection**: Identifies the onset of systolic upstroke by finding the first significant peak in the second derivative post-pulse onset.
-  *	**b Point Detection**: Detects the systolic peak by locating the first significant negative peak after the a point in the second derivative.
-  *	**e Point Detection**: Determines the onset of diastolic deceleration by spotting the first significant positive peak following the b point in the second derivative.
-  *	**Iteration and Application**: Runs through each epoch, applying the above criteria within intervals demarcated by detected peaks and onsets.
-  *	**Peak Selection**: Utilizes MATLAB's findpeaks function to pinpoint the most prominent peaks corresponding to physiological markers.
-  *	**Filtering and Validation**: Ensures physiological plausibility by filtering out inconsistent a, b, and e point indices, such as e points with amplitudes higher than a points.
+   *	Calculates the first and second derivatives of the PPG signal to highlight changes in the waveform's slope.
+   *	**a Point Detection**: Identifies the onset of systolic upstroke by finding the first significant peak in the second derivative post-pulse onset.
+   *	**b Point Detection**: Detects the systolic peak by locating the first significant negative peak after the a point in the second derivative.
+   *	**e Point Detection**: Determines the onset of diastolic deceleration by spotting the first significant positive peak following the b point in the second derivative.
+   *	**Iteration and Application**: Runs through each epoch, applying the above criteria within intervals demarcated by detected peaks and onsets.
+   *	**Peak Selection**: Utilizes MATLAB's findpeaks function to pinpoint the most prominent peaks corresponding to physiological markers.
+   *	**Filtering and Validation**: Ensures physiological plausibility by filtering out inconsistent a, b, and e point indices, such as e points with amplitudes higher than a points.
 *	**Dependencies**:
-  *	This function depends on the accurate detection of peaks and onsets provided by preliminary processing steps.
-  *	MATLAB's Signal Processing Toolbox for differential and peak detection functions.
+   *	This function depends on the accurate detection of peaks and onsets provided by preliminary processing steps.
+   *	MATLAB's Signal Processing Toolbox for differential and peak detection functions.
 
 ### [extractAPGFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractAPGFeatures.m)
 * **Purpose**: Extracts key features from the APG (Accelerated Plethysmogram) waveform derived from PPG (Photoplethysmogram) data. The function focuses on deriving meaningful metrics from the relationships between the a, b, and e points in the waveform, which are critical for evaluating cardiovascular health and autonomic nervous system function.
@@ -341,7 +341,7 @@
 
 ### [feature_significance.py](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/feature_significance.py)
 * **Purpose**: This script processes PPG signal data extracted into feature sets to evaluate statistical significance across different sleep stage classifications. It automates the assessment of feature relevance in distinguishing between wake, NREM, and REM sleep stages using various statistical tests.
-* * **Inputs**:
+* **Inputs**:
   * Directory including .csv files with pre-extracted features with filenames indicative of the subject ID and data type.
 * **Outputs**:
   * CSV files for each classification stage with features deemed significant and the full dataframe with all features showing significant and non-significant features for each classification.
