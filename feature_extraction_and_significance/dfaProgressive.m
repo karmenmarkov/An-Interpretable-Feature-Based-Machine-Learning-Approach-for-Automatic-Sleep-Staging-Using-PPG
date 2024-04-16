@@ -1,5 +1,5 @@
-function PPI_PDFA_avg = progressive_dfa(PPI, segment_length)
-    % progressive_dfa calculates the average Detrended Fluctuation Analysis (DFA) exponent across multiple segments of a PPI series.
+function PPI_PDFA_avg = dfaProgressive(PPI, segment_length)
+    % dfaProgressive calculates the average Detrended Fluctuation Analysis (DFA) exponent across multiple segments of a PPI series.
     % This method helps in understanding the scaling behavior over smaller, progressive segments of the PPI data.
     %
     % Inputs:
