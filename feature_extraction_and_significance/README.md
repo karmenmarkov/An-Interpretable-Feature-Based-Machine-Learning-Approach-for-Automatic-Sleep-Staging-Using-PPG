@@ -89,7 +89,7 @@
 ### [extractAPGFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractAPGFeatures.m)
 * **Purpose**: Extracts key features from the APG (Accelerated Plethysmogram) waveform derived from PPG (Photoplethysmogram) data. The function focuses on deriving meaningful metrics from the relationships between the a, b, and e points in the waveform, which are critical for evaluating cardiovascular health and autonomic nervous system function.
 * **Inputs**:
-  * 'data': Matrix of PPG data, each column representing an epoch. The first row, containing labels, is ignored during processing.
+  * `data`: Matrix of PPG data, each column representing an epoch. The first row, containing labels, is ignored during processing.
   * 'a_peaks_epochs': Cell array of indices for a peaks (indicative of the onset of systolic upstroke).
   * 'b_peaks_epochs': Cell array of indices for b peaks (the systolic peak).
   * 'e_peaks_epochs': Cell array of indices for e peaks (early diastolic phase).
