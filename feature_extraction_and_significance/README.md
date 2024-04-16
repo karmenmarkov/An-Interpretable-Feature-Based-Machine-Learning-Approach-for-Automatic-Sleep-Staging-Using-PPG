@@ -83,8 +83,8 @@
    *	**Peak Selection**: Utilizes MATLAB's findpeaks function to pinpoint the most prominent peaks corresponding to physiological markers.
    *	**Filtering and Validation**: Ensures physiological plausibility by filtering out inconsistent a, b, and e point indices, such as e points with amplitudes higher than a points.
 *	**Dependencies**:
-    *	This function depends on the accurate detection of peaks and onsets provided by preliminary processing steps.
-    *	MATLAB's Signal Processing Toolbox for differential and peak detection functions.
+  *	This function depends on the accurate detection of peaks and onsets provided by preliminary processing steps.
+  *	MATLAB's Signal Processing Toolbox for differential and peak detection functions.
 
 ### [extractAPGFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractAPGFeatures.m)
 * **Purpose**: Extracts key features from the APG (Accelerated Plethysmogram) waveform derived from PPG (Photoplethysmogram) data. The function focuses on deriving meaningful metrics from the relationships between the a, b, and e points in the waveform, which are critical for evaluating cardiovascular health and autonomic nervous system function.
@@ -338,5 +338,18 @@
   * Ensure the script and all custom function scripts are in the MATLAB path.
   * Place preprocessed .csv data files in the specified input directory.
   * Execute the script from MATLAB command window or editor to process data and generate features.
+
+### [feature_significance.py](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/feature_significance.py)
+* **Purpose**: This script processes PPG signal data extracted into feature sets to evaluate statistical significance across different sleep stage classifications. It automates the assessment of feature relevance in distinguishing between wake, NREM, and REM sleep stages using various statistical tests.
+* * **Inputs**:
+  * Directory including .csv files with pre-extracted features with filenames indicative of the subject ID and data type.
+* **Outputs**:
+  * CSV files for each classification stage with features deemed significant and the full dataframe with all features showing significant and non-significant features for each classification.
+* **Process**:
+  * **Data Aggregation**: The script aggregates feature data from multiple CSV files, each representing a different participant or session, ensuring that all files meet a predefined structure before merging.
+  * **Feature Adjustment**: Labels within the dataset are adjusted to facilitate binary, ternary, and more granular sleep stage classifications.
+  * **Statistical Testing**: Implements normality tests and applies appropriate statistical tests (t-tests, Mann-Whitney U, ANOVA, or Kruskal-Wallis) based on the distribution characteristics of the data to determine feature significance across different stages.
+  * **Post-hoc Analysis**: For features found to be significant, post-hoc tests discern which specific groups differ from each other.
+  * **Output**: Generates two primary outputs for each classification level—processed datasets ready for model training and summaries of significant features.
 
 
