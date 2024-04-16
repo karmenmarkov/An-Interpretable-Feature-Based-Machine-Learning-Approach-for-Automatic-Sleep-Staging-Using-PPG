@@ -1,5 +1,5 @@
-function FDMA_avg = DMA_avg(PPI, scales)
-    % DMA_avg calculates the Detrended Moving Average (DMA) over multiple scales for Peak-to-Peak Interval (PPI) data.
+function FDMA_avg = dmaAvg(PPI, scales)
+    % dmaAvg calculates the Detrended Moving Average (DMA) over multiple scales for Peak-to-Peak Interval (PPI) data.
     % DMA is a method used to analyze the scaling properties of a time series by detrending the data with a moving average and analyzing the variance of the residuals.
     %
     % Inputs:
