@@ -14,16 +14,16 @@ We utilize the CAP Sleep Database available on PhysioNet (https://physionet.org/
 | **Age**                     | 41.4 ± 16.8 (16-76) | 48.7 ± 21.1 (14-82) | 45.8 ± 19.7 (14-82) |
 | **Pathology Distribution**  |                 |                 |                 |
 | No Pathology                |                 |                 | 4               |
-| Insomnia                    | -               |                 | 7               |
-| Narcolepsy                  | -               |                 | 4               |
+| Insomnia                    |                 |                 | 7               |
+| Narcolepsy                  |                 |                 | 4               |
 | Nocturnal Frontal Lobe Epilepsy |             |                 | 39              |
-| Periodic Leg Movement       | -               |                 | 9               |
-| REM Behavior Disorder       | -               |                 | 18              |
-| Sleep Disordered Breathing  | -               |                 | 3               |
+| Periodic Leg Movement       |                 |                 | 9               |
+| REM Behavior Disorder       |                 |                 | 18              |
+| Sleep Disordered Breathing  |                 |                 | 3               |
 
 
 ## Epoch Distribution
-* **Total Epochs**: 85,542
+**Total Epochs**: 85,542
 * Wake: *n* = 16,128 (19%)
 * N1: *n* = 3,676 (4%)
 * N2: *n* = 30,843 (36%)
