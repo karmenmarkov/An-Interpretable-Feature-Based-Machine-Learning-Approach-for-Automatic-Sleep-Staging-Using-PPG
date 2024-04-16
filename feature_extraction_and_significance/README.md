@@ -5,13 +5,13 @@
 ### [detectPeaksOnsets.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/detectPeaksOnsets.m)
 * **Purpose**: Detects peaks and onsets in PPG signal data using the ‘MSPTD’ beat detector from the PPG_Beats toolbox. Essential for preprocessing PPG signals in preparation for further analysis or feature extraction.
 * **Inputs**:
- *	‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- *	‘fs’ - Sampling rate of the PPG signal.
+  *  ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  *  ‘fs’ - Sampling rate of the PPG signal.
 * **Outputs**:
- *	‘detected_peaks’ - Cell array containing detected peaks for each epoch.
- *	‘detected_onsets’ - Cell array containing detected onsets for each epoch.
- *	‘clean_data’ - Filtered data matrix including only epochs where peaks and onsets were successfully detected.
- *	‘valid_epochs_index’ - Indices of epochs that were successfully processed.
+ *  ‘detected_peaks’ - Cell array containing detected peaks for each epoch.
+ * 	‘detected_onsets’ - Cell array containing detected onsets for each epoch.
+ *	 ‘clean_data’ - Filtered data matrix including only epochs where peaks and onsets were successfully detected.
+ *	 ‘valid_epochs_index’ - Indices of epochs that were successfully processed.
 * **Process**: 
   * Utilizes the MSPTD algorithm from the PPG_Beats toolbox for peak and onset detection.
   * Handles PPG signal noise effectively to identify physiologically relevant features:
