@@ -10,7 +10,7 @@
 * **Outputs**:
   *  `detected_peaks` - Cell array containing detected peaks for each epoch.
   * 	`detected_onsets` - Cell array containing detected onsets for each epoch.
-  *	 `clean_data` - Filtered data matrix including only epochs where peaks and onsets were successfully detected.
+  *  `clean_data` - Filtered data matrix including only epochs where peaks and onsets were successfully detected.
   *	 `valid_epochs_index` - Indices of epochs that were successfully processed.
 * **Process**: 
   * Utilizes the MSPTD algorithm from the PPG_Beats toolbox for peak and onset detection.
@@ -46,10 +46,10 @@
 # [extractPPGSignalFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGSignalFeatures.m)
 * **Purpose**: Extracts a variety of PPG signal geometric features crucial for detailed physiological analysis. The function computes features related to systolic and diastolic phases of the PPG signal, including times, peaks, areas, and derived ratios.
 * **Inputs**:
- * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- * `detected_peaks` - Cell array containing detected peaks for each epoch
- * `detected_onsets` - Cell array containing detected onsets for each epoch.
- * `fs` - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `detected_peaks` - Cell array containing detected peaks for each epoch
+  * `detected_onsets` - Cell array containing detected onsets for each epoch.
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
   * `features_table` - A table containing the calculated features for each epoch, with columns for each feature including averages, standard deviations, and specific geometric calculations relevant to cardiovascular analysis.
 * **Process**: 
