@@ -66,22 +66,22 @@
 ### [detectABEpeaks.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/detectABEpeaks.m)
 *	**Purpose**: Automatically detects the a, b, and e points in the PPG waveform for each epoch. These points correspond to key physiological features in the blood volume pulse waveform: a_peaks (systolic upstroke), b_peaks (systolic peak), and e_peaks (early diastolic point).
 *	**Inputs**:
- *	`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- *	`detected_peaks` - Cell array containing detected peaks for each epoch
- *	`detected_onsets` - Cell array containing detected onsets for each epoch.
- *	`fs` - Sampling rate of the PPG signal.
+  *	`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  *	`detected_peaks` - Cell array containing detected peaks for each epoch
+  *	`detected_onsets` - Cell array containing detected onsets for each epoch.
+  *	`fs` - Sampling rate of the PPG signal.
 *	**Outputs**:
- *	`a_peaks_epochs` - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
- *	`b_peaks_epochs` - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
- *	`e_peaks_epochs` - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
+  *	`a_peaks_epochs` - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
+  *	`b_peaks_epochs` - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
+  *	`e_peaks_epochs` - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
 *	**Process**:
- *	Calculates the first and second derivatives of the PPG signal to highlight changes in the waveform's slope.
- *	**a Point Detection**: Identifies the onset of systolic upstroke by finding the first significant peak in the second derivative post-pulse onset.
- *	**b Point Detection**: Detects the systolic peak by locating the first significant negative peak after the a point in the second derivative.
- *	**e Point Detection**: Determines the onset of diastolic deceleration by spotting the first significant positive peak following the b point in the second derivative.
- *	**Iteration and Application**: Runs through each epoch, applying the above criteria within intervals demarcated by detected peaks and onsets.
- *	**Peak Selection**: Utilizes MATLAB's findpeaks function to pinpoint the most prominent peaks corresponding to physiological markers.
- *	**Filtering and Validation**: Ensures physiological plausibility by filtering out inconsistent a, b, and e point indices, such as e points with amplitudes higher than a points.
+  *	Calculates the first and second derivatives of the PPG signal to highlight changes in the waveform's slope.
+  *	**a Point Detection**: Identifies the onset of systolic upstroke by finding the first significant peak in the second derivative post-pulse onset.
+  *	**b Point Detection**: Detects the systolic peak by locating the first significant negative peak after the a point in the second derivative.
+  *	**e Point Detection**: Determines the onset of diastolic deceleration by spotting the first significant positive peak following the b point in the second derivative.
+  *	**Iteration and Application**: Runs through each epoch, applying the above criteria within intervals demarcated by detected peaks and onsets.
+  *	**Peak Selection**: Utilizes MATLAB's findpeaks function to pinpoint the most prominent peaks corresponding to physiological markers.
+  *	**Filtering and Validation**: Ensures physiological plausibility by filtering out inconsistent a, b, and e point indices, such as e points with amplitudes higher than a points.
 *	**Dependencies**:
   *	 This function depends on the accurate detection of peaks and onsets provided by preliminary processing steps.
   *	 MATLAB's Signal Processing Toolbox for differential and peak detection functions.
@@ -159,12 +159,12 @@
 * **Outputs**:
   * `featuresTable` - MATLAB table containing wavelet-derived features including energy, mean, standard deviation, and variance at various decomposition levels, along with approximation features.
 * **Process**:
- * Utilizes the 'sym6' symlet wavelet for its balance of smoothness and symmetry, ideal for PPG signal analysis.
- * Conducts multilevel wavelet decomposition to analyze PPG signals across different frequency scales.
- * Extracts detail coefficients at higher frequency levels to capture transient signal characteristics.
- * Analyzes approximation coefficients at each level to represent the signal`s underlying trend.
- * Calculates statistical features including energy, mean, standard deviation, and variance from wavelet coefficients.
- * Ensures that both frequency content and signal variability are captured, providing a comprehensive understanding of the physiological implications.
+  * Utilizes the 'sym6' symlet wavelet for its balance of smoothness and symmetry, ideal for PPG signal analysis.
+  * Conducts multilevel wavelet decomposition to analyze PPG signals across different frequency scales.
+  * Extracts detail coefficients at higher frequency levels to capture transient signal characteristics.
+  * Analyzes approximation coefficients at each level to represent the signal`s underlying trend.
+  * Calculates statistical features including energy, mean, standard deviation, and variance from wavelet coefficients.
+  * Ensures that both frequency content and signal variability are captured, providing a comprehensive understanding of the physiological implications.
 
 ### [extractPPGIMFFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGFDFeatures.m)
 * **Purpose**: Extracts a detailed set of features from the first intrinsic mode function (IMF) of PPG data. The features include instantaneous attributes (amplitude, frequency, phase) and statistical metrics, providing a thorough analysis of the signal's physiological information content.
@@ -296,36 +296,24 @@ Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Avail
  * [Giovanni Iacobello (2024). Fast natural visibility graph (NVG) for MATLAB](https://www.mathworks.com/matlabcentral/fileexchange/70432-fast-natural-visibility-graph-nvg-for-matlab), MATLAB Central File Exchange. Retrieved April 16, 2024.
   * Nathan D. Cahill, "Graph properties function," available on GitHub under [NetworkTopologyvsFlowVulnerability repository](https://github.com/Roberock/NetworkTopologyvsFlowVulnerbaility/blob/master/graphProperties.m), accessed April 12, 2024.
 
-### extractPPIdfaFeatures
-
-Purpose:
-This function aims to extract various fractal and correlation analysis metrics from Peak-to-Peak Interval (PPI) data, critical for understanding the underlying physiological dynamics reflected in PPG signals.
-
-Methodology:
-
-Fractal Dimensions: Calculates the Higuchi Fractal Dimension (HFD) to quantify the fractal properties of PPI data, indicating complexity and variability.
-Detrended Fluctuation Analysis (DFA): Computes the overall DFA exponent, short-term, and long-term scaling exponents to evaluate intrinsic correlation properties within the PPI data.
-Progressive and Windowed DFA: Analyzes segments and windows of PPI data to determine local DFA values, providing insights into how correlations evolve over time or across different sections of the data.
-DMA Analysis: Implements Detrended Moving Average analysis to provide another perspective on the fractal nature of the time series by examining average fluctuations at various scales.
-
-Inputs:
-`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-`fs` - Sampling rate of the PPG signal.
-`detected_peaks` - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
-
-Outputs:
-`featuresTable` - A table containing the calculated features for each epoch, which includes measures such as the Higuchi Fractal Dimension, various DFA indices, and more. This table facilitates further statistical analysis or machine learning applications.
-
-
-Dependencies:
-
-Higuchi_FD.m: Custom function for calculating the fractal dimension of a time series.
-dfaOverall.m, dfaShortLong.m, progressive_dfa.m, windowed_dfa.m, DMA_avg.m: A suite of custom functions for comprehensive DFA analysis adapted to various contexts and requirements of the data. The details for each function are available in respective code files.
-
-% References:
-    %   - Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures
-    %     (https://www.mathworks.com/matlabcentral/fileexchange/50290-higuchi-and-katz-fractal-dimension-measures),
-    %     MATLAB Central File Exchange. Retrieved April 12, 2024.
+### [extractPPIdfaFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPIdfaFeatures.m)
+* **Purpose**: This function aims to extract various fractal and correlation analysis metrics from Peak-to-Peak Interval (PPI) data, critical for understanding the underlying physiological dynamics reflected in PPG signals.
+* * **Inputs**:
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `fs` - Sampling rate of the PPG signal.
+  * `detected_peaks` - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
+* **Outputs**:
+  * `featuresTable` - A table containing the calculated features for each epoch, which includes measures such as the Higuchi Fractal Dimension, various DFA indices, and more. This table facilitates further statistical analysis or machine learning applications.
+* **Process**:
+  * **Fractal Dimensions**: Calculates the Higuchi Fractal Dimension (HFD) to quantify the fractal properties of PPI data, indicating complexity and variability.
+  * **Detrended Fluctuation Analysis (DFA)**: Computes the overall DFA exponent, short-term, and long-term scaling exponents to evaluate intrinsic correlation properties within the PPI data.
+  * **Progressive and Windowed DFA**: Analyzes segments and windows of PPI data to determine local DFA values, providing insights into how correlations evolve over time or across different sections of the data.
+  * **DMA Analysis**: Implements Detrended Moving Average analysis to provide another perspective on the fractal nature of the time series by examining average fluctuations at various scales.
+* **Dependencies***:
+* Higuchi_FD.m: Custom function for calculating the fractal dimension of a time series.
+* [dfaOverall.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaOverall.m), [dfaShortLong.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaShortLong.m), [dfaProgressive.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaProgressive.m), [dfaWindowed.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaeWindowed.m), [dmaAvg.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dmaAvg.m): A suite of custom functions for comprehensive DFA analysis adapted to various contexts and requirements of the data. The details for each function are available in respective code files.
+* **References**:
+  * [Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures](https://www.mathworks.com/matlabcentral/fileexchange/50290-higuchi-and-katz-fractal-dimension-measures),MATLAB Central File Exchange. Retrieved April 12, 2024.
 
 ExtractAllFeatures.m
 # Code Overview: PPG Data Feature Extraction
