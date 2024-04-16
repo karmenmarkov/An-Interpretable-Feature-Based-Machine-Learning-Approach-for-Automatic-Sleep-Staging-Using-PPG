@@ -29,7 +29,7 @@ import os
 
 # Import the features
 # Specify the directory containing your CSV files
-directory_path = '/Users/kmarkov/Documents/extracted_features'
+directory_path = 'path/to/your/extracted_features/'
 
 # Function to extract subjectID
 def extract_subject_id(file_name):
