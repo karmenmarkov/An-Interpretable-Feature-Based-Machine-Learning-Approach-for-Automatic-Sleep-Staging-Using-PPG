@@ -154,17 +154,17 @@
 ### [extractPPGWTFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGFDFeatures.m)
 * **Purpose**: Automates the extraction of wavelet transform features from preprocessed PPG data, employing a symlet wavelet to analyze the signal at multiple scales. This approach is useful in identifying intrinsic patterns and anomalies in PPG data that are often indicative of physiological states and cardiovascular health.
 * **Inputs**:
-  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * `fs` - Sampling rate of the PPG signal.
+   * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+   * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  * `featuresTable` - MATLAB table containing wavelet-derived features including energy, mean, standard deviation, and variance at various decomposition levels, along with approximation features.
+   * `featuresTable` - MATLAB table containing wavelet-derived features including energy, mean, standard deviation, and variance at various decomposition levels, along with approximation features.
 * **Process**:
-  * Utilizes the 'sym6' symlet wavelet for its balance of smoothness and symmetry, ideal for PPG signal analysis.
-  * Conducts multilevel wavelet decomposition to analyze PPG signals across different frequency scales.
-  * Extracts detail coefficients at higher frequency levels to capture transient signal characteristics.
-  * Analyzes approximation coefficients at each level to represent the signal`s underlying trend.
-  * Calculates statistical features including energy, mean, standard deviation, and variance from wavelet coefficients.
-  * Ensures that both frequency content and signal variability are captured, providing a comprehensive understanding of the physiological implications.
+   * Utilizes the 'sym6' symlet wavelet for its balance of smoothness and symmetry, ideal for PPG signal analysis.
+   * Conducts multilevel wavelet decomposition to analyze PPG signals across different frequency scales.
+   * Extracts detail coefficients at higher frequency levels to capture transient signal characteristics.
+   * Analyzes approximation coefficients at each level to represent the signal`s underlying trend.
+   * Calculates statistical features including energy, mean, standard deviation, and variance from wavelet coefficients.
+   * Ensures that both frequency content and signal variability are captured, providing a comprehensive understanding of the physiological implications.
 
 ### [extractPPGIMFFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGFDFeatures.m)
 * **Purpose**: Extracts a detailed set of features from the first intrinsic mode function (IMF) of PPG data. The features include instantaneous attributes (amplitude, frequency, phase) and statistical metrics, providing a thorough analysis of the signal's physiological information content.
@@ -200,32 +200,32 @@
 ### [extractPPGRRandDET.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGRRandDET.m)
 * **Purpose**: To compute recurrence-based metrics from Peak-to-Peak Interval (PPI) data derived from Photoplethysmography (PPG) signals. This analysis helps in understanding the underlying physiological states and their predictability through Recurrence Rate (RR) and Determinism (DET).
 * **Inputs**:
- * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- * `fs` - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
- * `featuresTable` - A table containing RR and DET measures for each epoch, aiding further analysis like trend identification or anomaly detection in physiological signals.
+  * `featuresTable` - A table containing RR and DET measures for each epoch, aiding further analysis like trend identification or anomaly detection in physiological signals.
 * **Process**:
- * **Recurrence Rate (RR)**: Measures the proportion of points in a recurrence plot where the signal revisits a state, reflecting the overall frequency of recurrent states within the signal.
- * **Determinism (DET**): Analyzes the predictability and regularity of the time series by identifying the proportion of recurrent points that form diagonal lines in the recurrence plot, which indicates deterministic structures in the signal dynamics.
+  * **Recurrence Rate (RR)**: Measures the proportion of points in a recurrence plot where the signal revisits a state, reflecting the overall frequency of recurrent states within the signal.
+  * **Determinism (DET**): Analyzes the predictability and regularity of the time series by identifying the proportion of recurrent points that form diagonal lines in the recurrence plot, which indicates deterministic structures in the signal dynamics.
 * **Dependencies**:
- * [`calculateRRandDet.m`](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/calculateRRandDet.m): A custom function that computes the Recurrence Plot (RP) along with RR and DET metrics based on predefined thresholds and minimum line lengths. Details are available in the custom function file.
+  * [`calculateRRandDet.m`](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/calculateRRandDet.m): A custom function that computes the Recurrence Plot (RP) along with RR and DET metrics based on predefined thresholds and minimum line lengths. Details are available in the custom function file.
 
 ### [extractPPGLcHfdKfdFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGLcHfdKfdFeatures.m)
 * **Purpose**: This function extracts key dynamical and fractal metrics from Photoplethysmogram (PPG) signals to analyze physiological signals' complexity and chaotic behavior. Metrics extracted include the Lyapunov exponent, Higuchi fractal dimension, and Katz fractal dimension.
 * **Inputs**:
- * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- * `fs` - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
- * `featuresTable` - Table containing the calculated features for each epoch, enabling further analysis of signal characteristics.
+  * `featuresTable` - Table containing the calculated features for each epoch, enabling further analysis of signal characteristics.
 * **Process**:
- * **Lyapunov Exponent (LC)**: Measures the rate of divergence of closely related trajectories in the signal, providing insight into the chaotic nature of the physiological system.
- * **Higuchi Fractal Dimension (HFD)**: Estimates the fractal dimension of the signal using a time-domain approach, reflecting the complexity.
- * **Katz Fractal Dimension (KFD)**: Another measure of fractal dimension that accounts for both the signal's amplitude and length.
+  * **Lyapunov Exponent (LC)**: Measures the rate of divergence of closely related trajectories in the signal, providing insight into the chaotic nature of the physiological system.
+  * **Higuchi Fractal Dimension (HFD)**: Estimates the fractal dimension of the signal using a time-domain approach, reflecting the complexity.
+  * **Katz Fractal Dimension (KFD)**: Another measure of fractal dimension that accounts for both the signal's amplitude and length.
 * **Dependencies**:
- * lyapunovExponent: Utilizes MATLAB's Predictive Maintenance Toolbox to estimate the rate of divergence among signal trajectories.
- * Higuchi_FD and Katz_FD: Custom functions available from MATLAB Central File Exchange to calculate respective fractal dimensions.
+  * lyapunovExponent: Utilizes MATLAB's Predictive Maintenance Toolbox to estimate the rate of divergence among signal trajectories.
+  * Higuchi_FD and Katz_FD: Custom functions available from MATLAB Central File Exchange to calculate respective fractal dimensions.
 * **References**:
-Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Available online: MATLAB Central File Exchange.
+ Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Available online: MATLAB Central File Exchange.
 
 ### [extractPPITDFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPITDFeatures.m)
 * **Purpose**: Extracts a comprehensive set of features from PPG peak-to-peak intervals, focusing on heart rate variability (HRV) metrics, statistical summaries, and advanced analysis like geometric and non-linear features. These features are critical for studies involving cardiovascular health, stress analysis, and other medical applications.
@@ -293,8 +293,8 @@ Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Avail
   * `fast_NVG` and `NVG_alg`: Custom MATLAB functions by Giovanni Iacobello for constructing and processing visibility graphs. These functions are pivotal for transforming time series data into a graph format that reflects the natural visibility among data points.
   * `graphProperties`: A MATLAB function that computes characteristic path length, global efficiency, and clustering coefficients among other properties from a given graph's adjacency matrix, developed by Nathan D. Cahill.
 **References**:
- * [Giovanni Iacobello (2024). Fast natural visibility graph (NVG) for MATLAB](https://www.mathworks.com/matlabcentral/fileexchange/70432-fast-natural-visibility-graph-nvg-for-matlab), MATLAB Central File Exchange. Retrieved April 16, 2024.
-  * Nathan D. Cahill, "Graph properties function," available on GitHub under [NetworkTopologyvsFlowVulnerability repository](https://github.com/Roberock/NetworkTopologyvsFlowVulnerbaility/blob/master/graphProperties.m), accessed April 12, 2024.
+ * Giovanni Iacobello (2024). Fast natural visibility graph (NVG) for MATLAB, MATLAB Central File Exchange. Retrieved April 16, 2024. [Access here](https://www.mathworks.com/matlabcentral/fileexchange/70432-fast-natural-visibility-graph-nvg-for-matlab)
+  * Nathan D. Cahill, "Graph properties function," available on GitHub under NetworkTopologyvsFlowVulnerability repository, accessed April 12, 2024. [Access here](https://github.com/Roberock/NetworkTopologyvsFlowVulnerbaility/blob/master/graphProperties.m)
 
 ### [extractPPIdfaFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPIdfaFeatures.m)
 * **Purpose**: This function aims to extract various fractal and correlation analysis metrics from Peak-to-Peak Interval (PPI) data, critical for understanding the underlying physiological dynamics reflected in PPG signals.
@@ -313,7 +313,7 @@ Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Avail
 * Higuchi_FD.m: Custom function for calculating the fractal dimension of a time series.
 * [dfaOverall.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaOverall.m), [dfaShortLong.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaShortLong.m), [dfaProgressive.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaProgressive.m), [dfaWindowed.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaeWindowed.m), [dmaAvg.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dmaAvg.m): A suite of custom functions for comprehensive DFA analysis adapted to various contexts and requirements of the data. The details for each function are available in respective code files.
 * **References**:
-  * [Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures](https://www.mathworks.com/matlabcentral/fileexchange/50290-higuchi-and-katz-fractal-dimension-measures),MATLAB Central File Exchange. Retrieved April 12, 2024.
+  * Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures,MATLAB Central File Exchange. Retrieved April 12, 2024.[Access here](https://www.mathworks.com/matlabcentral/fileexchange/50290-higuchi-and-katz-fractal-dimension-measures)
 
 ExtractAllFeatures.m
 # Code Overview: PPG Data Feature Extraction
