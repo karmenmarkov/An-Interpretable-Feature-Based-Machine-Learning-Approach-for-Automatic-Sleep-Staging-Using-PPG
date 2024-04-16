@@ -10,11 +10,10 @@
 %
 
 % Add path to functions
-addpath('/Users/kmarkov/Documents/Matlab_codes');
-addpath('/Users/kmarkov/Documents/Matlab_codes/ppg-beats-main/source');
+addpath('path/to/your/matlab_codes');
 
-cleanDataFolder = '/Users/kmarkov/Documents/clean_data_normalized/';
-outputFolder = '/Users/kmarkov/Documents/extracted_features_normalized/';
+cleanDataFolder = 'path/to/your/your_data/';
+outputFolder = 'path/to/your/extracted_features';
 
 
 % List all CSV files in the clean data folder
