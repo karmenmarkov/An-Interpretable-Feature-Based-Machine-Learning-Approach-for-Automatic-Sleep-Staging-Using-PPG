@@ -66,22 +66,22 @@
 ### [detectABEpeaks.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/detectABEpeaks.m)
 *	**Purpose**: Automatically detects the a, b, and e points in the PPG waveform for each epoch. These points correspond to key physiological features in the blood volume pulse waveform: a_peaks (systolic upstroke), b_peaks (systolic peak), and e_peaks (early diastolic point).
 *	**Inputs**:
-  *	 `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * 	`detected_peaks` - Cell array containing detected peaks for each epoch
-  *  `detected_onsets` - Cell array containing detected onsets for each epoch.
-  *	 `fs` - Sampling rate of the PPG signal.
+ *	`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+ *	`detected_peaks` - Cell array containing detected peaks for each epoch
+ *	`detected_onsets` - Cell array containing detected onsets for each epoch.
+ *	`fs` - Sampling rate of the PPG signal.
 *	**Outputs**:
-  * 	`a_peaks_epochs` - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
-  * 	`b_peaks_epochs` - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
-  *	 `e_peaks_epochs` - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
+ *	`a_peaks_epochs` - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
+ *	`b_peaks_epochs` - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
+ *	`e_peaks_epochs` - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
 *	**Process**:
-  * 	Calculates the first and second derivatives of the PPG signal to highlight changes in the waveform's slope.
-  *	 **a Point Detection**: Identifies the onset of systolic upstroke by finding the first significant peak in the second derivative post-pulse onset.
-  * 	**b Point Detection**: Detects the systolic peak by locating the first significant negative peak after the a point in the second derivative.
-  *	 **e Point Detection**: Determines the onset of diastolic deceleration by spotting the first significant positive peak following the b point in the second derivative.
-  *  **Iteration and Application**: Runs through each epoch, applying the above criteria within intervals demarcated by detected peaks and onsets.
-  *	 **Peak Selection**: Utilizes MATLAB's findpeaks function to pinpoint the most prominent peaks corresponding to physiological markers.
-  *	 **Filtering and Validation**: Ensures physiological plausibility by filtering out inconsistent a, b, and e point indices, such as e points with amplitudes higher than a points.
+ *	Calculates the first and second derivatives of the PPG signal to highlight changes in the waveform's slope.
+ *	**a Point Detection**: Identifies the onset of systolic upstroke by finding the first significant peak in the second derivative post-pulse onset.
+ *	**b Point Detection**: Detects the systolic peak by locating the first significant negative peak after the a point in the second derivative.
+ *	**e Point Detection**: Determines the onset of diastolic deceleration by spotting the first significant positive peak following the b point in the second derivative.
+ *	**Iteration and Application**: Runs through each epoch, applying the above criteria within intervals demarcated by detected peaks and onsets.
+ *	**Peak Selection**: Utilizes MATLAB's findpeaks function to pinpoint the most prominent peaks corresponding to physiological markers.
+ *	**Filtering and Validation**: Ensures physiological plausibility by filtering out inconsistent a, b, and e point indices, such as e points with amplitudes higher than a points.
 *	**Dependencies**:
   *	 This function depends on the accurate detection of peaks and onsets provided by preliminary processing steps.
   *	 MATLAB's Signal Processing Toolbox for differential and peak detection functions.
