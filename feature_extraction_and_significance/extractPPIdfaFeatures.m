@@ -63,11 +63,11 @@ function featuresTable = extractPPIdfaFeatures(data, detected_peaks, fs)
         [PPI_DFA_short_exponent, PPI_DFA_long_exponent] = dfaShortLong(PPI);
     
         % Progressive PDFA
-        PPI_PDFA = progressive_dfa(PPI, segmentSizeForPDFA);
+        PPI_PDFA = dfaProgressive(PPI, segmentSizeForPDFA);
     
         %PPI_WDFA
         window_size = 15;
-        PPI_WDFA = windowed_dfa(PPI, window_size);
+        PPI_WDFA = dfaWindowed(PPI, window_size);
     
         %PPI_DMA
         scales = unique(floor(logspace(log10(4), log10(length(PPI)/4), 20))); % Define scales based on the characteristics of this epoch's PPI
