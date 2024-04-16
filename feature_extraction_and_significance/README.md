@@ -66,25 +66,25 @@
 ### [detectABEpeaks.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/detectABEpeaks.m)
 *	**Purpose**: Automatically detects the a, b, and e points in the PPG waveform for each epoch. These points correspond to key physiological features in the blood volume pulse waveform: a_peaks (systolic upstroke), b_peaks (systolic peak), and e_peaks (early diastolic point).
 *	**Inputs**:
-  *	`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  *	`detected_peaks` - Cell array containing detected peaks for each epoch
-  *	`detected_onsets` - Cell array containing detected onsets for each epoch.
-  *	`fs` - Sampling rate of the PPG signal.
+   *	`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+   *	`detected_peaks` - Cell array containing detected peaks for each epoch
+   *	`detected_onsets` - Cell array containing detected onsets for each epoch.
+   *	`fs` - Sampling rate of the PPG signal.
 *	**Outputs**:
-  *	`a_peaks_epochs` - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
-  *	`b_peaks_epochs` - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
-  *	`e_peaks_epochs` - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
+   *	`a_peaks_epochs` - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
+   *	`b_peaks_epochs` - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
+   *	`e_peaks_epochs` - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
 *	**Process**:
-  *	Calculates the first and second derivatives of the PPG signal to highlight changes in the waveform's slope.
-  *	**a Point Detection**: Identifies the onset of systolic upstroke by finding the first significant peak in the second derivative post-pulse onset.
-  *	**b Point Detection**: Detects the systolic peak by locating the first significant negative peak after the a point in the second derivative.
-  *	**e Point Detection**: Determines the onset of diastolic deceleration by spotting the first significant positive peak following the b point in the second derivative.
-  *	**Iteration and Application**: Runs through each epoch, applying the above criteria within intervals demarcated by detected peaks and onsets.
-  *	**Peak Selection**: Utilizes MATLAB's findpeaks function to pinpoint the most prominent peaks corresponding to physiological markers.
-  *	**Filtering and Validation**: Ensures physiological plausibility by filtering out inconsistent a, b, and e point indices, such as e points with amplitudes higher than a points.
+   *	Calculates the first and second derivatives of the PPG signal to highlight changes in the waveform's slope.
+   *	**a Point Detection**: Identifies the onset of systolic upstroke by finding the first significant peak in the second derivative post-pulse onset.
+   *	**b Point Detection**: Detects the systolic peak by locating the first significant negative peak after the a point in the second derivative.
+   *	**e Point Detection**: Determines the onset of diastolic deceleration by spotting the first significant positive peak following the b point in the second derivative.
+   *	**Iteration and Application**: Runs through each epoch, applying the above criteria within intervals demarcated by detected peaks and onsets.
+   *	**Peak Selection**: Utilizes MATLAB's findpeaks function to pinpoint the most prominent peaks corresponding to physiological markers.
+   *	**Filtering and Validation**: Ensures physiological plausibility by filtering out inconsistent a, b, and e point indices, such as e points with amplitudes higher than a points.
 *	**Dependencies**:
-  *	 This function depends on the accurate detection of peaks and onsets provided by preliminary processing steps.
-  *	 MATLAB's Signal Processing Toolbox for differential and peak detection functions.
+   *	 This function depends on the accurate detection of peaks and onsets provided by preliminary processing steps.
+   *	 MATLAB's Signal Processing Toolbox for differential and peak detection functions.
 
 ### [extractAPGFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractAPGFeatures.m)
 * **Purpose**: Extracts key features from the APG (Accelerated Plethysmogram) waveform derived from PPG (Photoplethysmogram) data. The function focuses on deriving meaningful metrics from the relationships between the a, b, and e points in the waveform, which are critical for evaluating cardiovascular health and autonomic nervous system function.
@@ -225,7 +225,7 @@
   * lyapunovExponent: Utilizes MATLAB's Predictive Maintenance Toolbox to estimate the rate of divergence among signal trajectories.
   * Higuchi_FD and Katz_FD: Custom functions available from MATLAB Central File Exchange to calculate respective fractal dimensions.
 * **References**:
- Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Available online: MATLAB Central File Exchange.
+  * Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Available online: MATLAB Central File Exchange.
 
 ### [extractPPITDFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPITDFeatures.m)
 * **Purpose**: Extracts a comprehensive set of features from PPG peak-to-peak intervals, focusing on heart rate variability (HRV) metrics, statistical summaries, and advanced analysis like geometric and non-linear features. These features are critical for studies involving cardiovascular health, stress analysis, and other medical applications.
@@ -251,12 +251,12 @@
   * `tinn`: Indicates the base width of the densest part of the NN interval histogram, a measure of HRV.
   * `triangular_index`: Compares the total count of intervals to the histogram mode, indicating rhythm regularity.
 * **Process**:
- * Computes the histogram of peak-to-peak intervals (PPI) using the specified bin width to represent HRV distribution.
- * Identifies the histogram bin with the maximum count, representing the mode of heart rate intervals.
- * Initiates an optimization process to find the triangular base (TINN) that best fits the histogram by minimizing the difference between the actual histogram and an idealized triangular shape.
- * Iteratively searches for the optimal starting point (N) and endpoint (M) of the triangular base before and after the mode bin, respectively.
- * Calculates TINN as the distance between the optimized starting and ending points of the histogram's triangular base, providing an HRV measure.
- * Determines the triangular index as the ratio of the total number of intervals to the mode's height, offering insight into heart rate regularity.
+  * Computes the histogram of peak-to-peak intervals (PPI) using the specified bin width to represent HRV distribution.
+  * Identifies the histogram bin with the maximum count, representing the mode of heart rate intervals.
+  * Initiates an optimization process to find the triangular base (TINN) that best fits the histogram by minimizing the difference between the actual histogram and an idealized triangular shape.
+  * Iteratively searches for the optimal starting point (N) and endpoint (M) of the triangular base before and after the mode bin, respectively.
+  * Calculates TINN as the distance between the optimized starting and ending points of the histogram's triangular base, providing an HRV measure.
+  * Determines the triangular index as the ratio of the total number of intervals to the mode's height, offering insight into heart rate regularity.
 
 ### [extractPPIEntropyFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPIEntropyFeatures.m)
 * **Purpose**: To calculate multiple entropy metrics from PPI of PPG data, offering insights into the complexity and predictability of heart rate variations.
@@ -281,20 +281,20 @@
 ### [extractPPIvgFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPIEntropyFeatures.m)
 * **Purpose**: Analyzes Peak-to-Peak Intervals (PPI) derived from photoplethysmogram (PPG) signals through visibility graph analysis. 
 * **Inputs**:
- * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- * `detected_peaks` - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
- * `fs` - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `detected_peaks` - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
- * `featuresTable` - a table containing graph-based metrics for each epoch, offering a structured way to analyze and interpret the complexity of PPI data across different conditions or time frames.
+  * `featuresTable` - a table containing graph-based metrics for each epoch, offering a structured way to analyze and interpret the complexity of PPI data across different conditions or time frames.
 * **Process**:
   * **Visibility Graph Construction**: Converts PPI sequences into visibility graphs using the `fast_NVG` and `NVG_alg` functions. These graphs illustrate the natural visibility between points in the time series, encapsulating the dynamic structure and potential predictors of physiological states.
   * **Graph Feature Extraction**: Computes various metrics from the visibility graphs such as node degrees, clustering coefficients, and path lengths using the `graphProperties` function. These metrics provide a quantitative assessment of the graph's topology and efficiency.
 **Dependencies**:
   * `fast_NVG` and `NVG_alg`: Custom MATLAB functions by Giovanni Iacobello for constructing and processing visibility graphs. These functions are pivotal for transforming time series data into a graph format that reflects the natural visibility among data points.
   * `graphProperties`: A MATLAB function that computes characteristic path length, global efficiency, and clustering coefficients among other properties from a given graph's adjacency matrix, developed by Nathan D. Cahill.
-**References**:
- * Giovanni Iacobello (2024). Fast natural visibility graph (NVG) for MATLAB, MATLAB Central File Exchange. Retrieved April 16, 2024. [Access here](https://www.mathworks.com/matlabcentral/fileexchange/70432-fast-natural-visibility-graph-nvg-for-matlab)
-  * Nathan D. Cahill, "Graph properties function," available on GitHub under NetworkTopologyvsFlowVulnerability repository, accessed April 12, 2024. [Access here](https://github.com/Roberock/NetworkTopologyvsFlowVulnerbaility/blob/master/graphProperties.m)
+* **References**:
+  * Giovanni Iacobello (2024). Fast natural visibility graph (NVG) for MATLAB, MATLAB Central File Exchange. Retrieved April 16, 2024. [Access here](https://www.mathworks.com/matlabcentral/fileexchange/70432-fast-natural-visibility-graph-nvg-for-matlab)
+   * Nathan D. Cahill, "Graph properties function," available on GitHub under NetworkTopologyvsFlowVulnerability repository, accessed April 12, 2024. [Access here](https://github.com/Roberock/NetworkTopologyvsFlowVulnerbaility/blob/master/graphProperties.m)
 
 ### [extractPPIdfaFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPIdfaFeatures.m)
 * **Purpose**: This function aims to extract various fractal and correlation analysis metrics from Peak-to-Peak Interval (PPI) data, critical for understanding the underlying physiological dynamics reflected in PPG signals.
@@ -309,46 +309,34 @@
   * **Detrended Fluctuation Analysis (DFA)**: Computes the overall DFA exponent, short-term, and long-term scaling exponents to evaluate intrinsic correlation properties within the PPI data.
   * **Progressive and Windowed DFA**: Analyzes segments and windows of PPI data to determine local DFA values, providing insights into how correlations evolve over time or across different sections of the data.
   * **DMA Analysis**: Implements Detrended Moving Average analysis to provide another perspective on the fractal nature of the time series by examining average fluctuations at various scales.
-* **Dependencies***:
-* Higuchi_FD.m: Custom function for calculating the fractal dimension of a time series.
-* [dfaOverall.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaOverall.m), [dfaShortLong.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaShortLong.m), [dfaProgressive.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaProgressive.m), [dfaWindowed.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaeWindowed.m), [dmaAvg.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dmaAvg.m): A suite of custom functions for comprehensive DFA analysis adapted to various contexts and requirements of the data. The details for each function are available in respective code files.
+* **Dependencies**:
+ * Higuchi_FD.m: Custom function for calculating the fractal dimension of a time series.
+ * [dfaOverall.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaOverall.m), [dfaShortLong.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaShortLong.m), [dfaProgressive.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaProgressive.m), [dfaWindowed.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dfaeWindowed.m), [dmaAvg.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/dmaAvg.m): A suite of custom functions for comprehensive DFA analysis adapted to various contexts and requirements of the data. The details for each function are available in respective code files.
 * **References**:
   * Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures,MATLAB Central File Exchange. Retrieved April 12, 2024.[Access here](https://www.mathworks.com/matlabcentral/fileexchange/50290-higuchi-and-katz-fractal-dimension-measures)
 
-ExtractAllFeatures.m
-# Code Overview: PPG Data Feature Extraction
-
-## Purpose
-This MATLAB script is designed to automate the process of feature extraction from preprocessed, cleaned PPG data files. It applies various signal processing techniques to extract physiological and statistical features which are crucial for further analysis like sleep stage classification or health monitoring.
-
-## Functionality
-- **Data Input**: The script reads cleaned and normalized PPG data from CSV files.
-- **Feature Extraction**: Utilizes multiple custom functions to extract a wide range of features including:
-Peaks and Onsets: Detects key waveform points for subsequent feature calculations.
-APG Metrics: Gleans insights from the Accelerated Plethysmogram on cardiovascular health.
-Time-Domain Metrics: Provides HRV studies with essential variability statistics.
-Frequency-Domain Attributes: Analyzes autonomic influence on heart rate through spectral content.
-Wavelet Transform Analysis: Uncovers hidden PPG patterns at various scales.
-Entropy Measures: Evaluates the predictability and complexity of PPG signal fluctuations.
-PPI Analysis: Derives HRV and nonlinear dynamics from Peak-to-Peak intervals.
-Graph-Based Metrics: Transforms PPI into visibility graphs for topological analysis.
-Fractal Dimensions: Assesses signal complexity using fractal and correlation metrics.
-- **Error Handling**: Each extraction function is wrapped in a try-catch block to handle and log errors effectively.
-
-## Key Outputs:
-Features Table: A comprehensive collection of features for each PPG epoch, ready for further analysis or integration into machine learning models.
-Processed Files: The script outputs processed CSV files containing the extracted features for each epoch of PPG data, enabling easy access and visualization.
-Failed Files Log: Keeps track of any files that fail to process, ensuring robustness and accountability in the data processing pipeline.
-
-## How to Run
-- Place the script in the MATLAB path along with the required custom function scripts.
-- Ensure input CSV files are located in the specified directory.
-- Run the script from the MATLAB command window or editor.
-
-## Dependencies
-- MATLAB (R2021a or later recommended)
-- Signal Processing Toolbox
-- Statistics and Machine Learning Toolbox
-Custom MATLAB Functions: A suite of specialized functions developed to extract each set of features. These are critical for the in-depth analysis that this script conducts and are referenced throughout the code.
+### [ExtractAllFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/ExtractAllFeatures.m)
+* **Purpose**: Automates extraction of diverse physiological and statistical features from PPG data, essential for sleep stage classification and health monitoring.
+* **Inputs**:
+  * Directory with preprocessed and cleaned PPG data in .csv format.
+* **Outputs**:
+  * `featuresTable` - A comprehensive dataset with extracted features for each epoch.
+  * Processed `.csv` files - Ready for analysis or machine learning model integration.
+  * Log of failed files - Documenting any epochs that could not be processed.
+* **Process:**:
+  * Temporal dynamics from PPG waveforms.
+  * Spectral content via frequency and wavelet analyses.
+  * Heart rate variability metrics from PPI analysis.
+  * Complexity and regularity from entropy calculations.
+  * Structural insights through graph-based metrics.
+* **Dependencies**:
+  * MATLAB (R2021a or later recommended)
+  * Signal Processing Toolbox
+  * Statistics and Machine Learning Toolbox
+  * Custom MATLAB Functions: A suite of specialized functions developed to extract each set of features. 
+* **Instructions**:
+  * Ensure the script and all custom function scripts are in the MATLAB path.
+  * Place preprocessed .csv data files in the specified input directory.
+  * Execute the script from MATLAB command window or editor to process data and generate features.
 
 
