@@ -3,7 +3,7 @@ The preprocessing phase lays the groundwork for all subsequent analysis by trans
 
 ## Steps
 ### [restructure_labels.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/restructure_labels.py)
-* **Purpose**: Transforms sleep stage labels from raw ’.txt’ files into structured ’.csv’ format suitable for analysis. 
+* **Purpose**: Transforms sleep stage labels from raw `.txt` files into structured ’.csv’ format suitable for analysis. 
 * **Inputs**: Directory with `.txt` files of timestamped sleep stage events.
 * **Outputs**: Directory with `.csv` files containing numeric-coded sleep stage data and categorizations (binary sleep/wake, 3 stages, 4 stages, and 5 stages).
 * **Process**: 
