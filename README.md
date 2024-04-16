@@ -56,5 +56,5 @@ To use this repository:
 * Clone the repo: git clone https://github.com/kmarkoveth/PPG.git
 * Navigate to each section and follow the setup instructions detailed in the respective README files.
 
-## Acknowledgments
+## Acknowledgements
 This project was supervised by Dr. Mohamed Elgendi, whose expertise and guidance were instrumental in the research and development of the methodologies used. We thank all contributors and participants of the CAP Sleep Database.
