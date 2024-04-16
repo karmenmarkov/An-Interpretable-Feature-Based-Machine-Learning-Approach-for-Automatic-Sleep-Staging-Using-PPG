@@ -3,15 +3,15 @@
 
 ## Functions
 ### [detectPeaksOnsets.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/detectPeaksOnsets.m)
-* **Purpose**: Detects peaks and onsets in PPG signal data using the ‘MSPTD’ beat detector from the PPG_Beats toolbox. Essential for preprocessing PPG signals in preparation for further analysis or feature extraction.
+* **Purpose**: Detects peaks and onsets in PPG signal data using the `MSPTD` beat detector from the PPG_Beats toolbox. Essential for preprocessing PPG signals in preparation for further analysis or feature extraction.
 * **Inputs**:
-  *  ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  *  ‘fs’ - Sampling rate of the PPG signal.
+  *  `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  *  `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
- *  ‘detected_peaks’ - Cell array containing detected peaks for each epoch.
- * 	‘detected_onsets’ - Cell array containing detected onsets for each epoch.
- *	 ‘clean_data’ - Filtered data matrix including only epochs where peaks and onsets were successfully detected.
- *	 ‘valid_epochs_index’ - Indices of epochs that were successfully processed.
+  *  `detected_peaks` - Cell array containing detected peaks for each epoch.
+  * 	`detected_onsets` - Cell array containing detected onsets for each epoch.
+  *	 `clean_data` - Filtered data matrix including only epochs where peaks and onsets were successfully detected.
+  *	 `valid_epochs_index` - Indices of epochs that were successfully processed.
 * **Process**: 
   * Utilizes the MSPTD algorithm from the PPG_Beats toolbox for peak and onset detection.
   * Handles PPG signal noise effectively to identify physiologically relevant features:
@@ -28,13 +28,13 @@
 ### [removeEpochswRailing.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/removeEpochswRailing.m)
 * **Purpose**: Identifies and removes epochs with railing artifacts in PPG signal data. Railing is identified by the presence of peaks that are too close together, which are not physiologically plausible.
 * **Inputs**:
-  *	‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  *	‘detected_peaks’ - Cell array containing detected peaks for each epoch
-  *	‘fs’ - Sampling rate of the PPG signal.
+  *	`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  *	`detected_peaks` - Cell array containing detected peaks for each epoch
+  *	`fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  *	‘cleaned_data’ - Data matrix excluding problematic epochs.
-  *	‘valid_epochs’- Logical array indicating whether each epoch is valid.
-  *	‘removed_epochs’ - Indices of epochs removed due to railing.
+  *	`cleaned_data` - Data matrix excluding problematic epochs.
+  *	`valid_epochs`- Logical array indicating whether each epoch is valid.
+  *	`removed_epochs` - Indices of epochs removed due to railing.
 * **Process**: 
   *	Examines the spacing between peaks within each PPG signal epoch to detect railing artifacts.
   *	Identifies problematic epochs as those with three or more peaks spaced fewer than a set minimum of data points apart (20).
@@ -46,12 +46,12 @@
 # [extractPPGSignalFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGSignalFeatures.m)
 * **Purpose**: Extracts a variety of PPG signal geometric features crucial for detailed physiological analysis. The function computes features related to systolic and diastolic phases of the PPG signal, including times, peaks, areas, and derived ratios.
 * **Inputs**:
- * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- * ‘detected_peaks’ - Cell array containing detected peaks for each epoch
- * ‘detected_onsets’ - Cell array containing detected onsets for each epoch.
- * ‘fs’ - Sampling rate of the PPG signal.
+ * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+ * `detected_peaks` - Cell array containing detected peaks for each epoch
+ * `detected_onsets` - Cell array containing detected onsets for each epoch.
+ * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  * ‘features_table’ - A table containing the calculated features for each epoch, with columns for each feature including averages, standard deviations, and specific geometric calculations relevant to cardiovascular analysis.
+  * `features_table` - A table containing the calculated features for each epoch, with columns for each feature including averages, standard deviations, and specific geometric calculations relevant to cardiovascular analysis.
 * **Process**: 
   * Calculates systolic and diastolic durations by measuring the time intervals between detected peaks and onsets.
   * Determines peak amplitudes to identify the highest points of blood volume during the cardiac cycle.
@@ -66,14 +66,14 @@
 ### [detectABEpeaks.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/detectABEpeaks.m)
 *	**Purpose**: Automatically detects the a, b, and e points in the PPG waveform for each epoch. These points correspond to key physiological features in the blood volume pulse waveform: a_peaks (systolic upstroke), b_peaks (systolic peak), and e_peaks (early diastolic point).
 *	**Inputs**:
-  *	‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  *	‘detected_peaks’ - Cell array containing detected peaks for each epoch
-  *	‘detected_onsets’ - Cell array containing detected onsets for each epoch.
-  *	‘fs’ - Sampling rate of the PPG signal.
+  *	`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  *	`detected_peaks` - Cell array containing detected peaks for each epoch
+  *	`detected_onsets` - Cell array containing detected onsets for each epoch.
+  *	`fs` - Sampling rate of the PPG signal.
 *	**Outputs**:
-  *	‘a_peaks_epochs’ - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
-  *	‘b_peaks_epochs’ - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
-  *	‘e_peaks_epochs’ - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
+  *	`a_peaks_epochs` - Indices of detected a points for each epoch, corresponding to the beginning of the systolic phase.
+  *	`b_peaks_epochs` - Indices of detected b points for each epoch, typically the highest point of the systolic phase.
+  *	`e_peaks_epochs` - Indices of detected e points for each epoch, marking the start of the diastolic rebound.
 *	**Process**:
   *	Calculates the first and second derivatives of the PPG signal to highlight changes in the waveform's slope.
   *	**a Point Detection**: Identifies the onset of systolic upstroke by finding the first significant peak in the second derivative post-pulse onset.
@@ -89,12 +89,12 @@
 ### [extractAPGFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractAPGFeatures.m)
 * **Purpose**: Extracts key features from the APG (Accelerated Plethysmogram) waveform derived from PPG (Photoplethysmogram) data. The function focuses on deriving meaningful metrics from the relationships between the a, b, and e points in the waveform, which are critical for evaluating cardiovascular health and autonomic nervous system function.
 * **Inputs**:
-  * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * ‘a_peaks_epochs’ - Cell array of indices for a peaks (indicative of the onset of systolic upstroke).
-  * ‘b_peaks_epochs’ - Cell array of indices for b peaks (the systolic peak).
-  * ‘e_peaks_epochs’ - Cell array of indices for e peaks (early diastolic phase).
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `a_peaks_epochs` - Cell array of indices for a peaks (indicative of the onset of systolic upstroke).
+  * `b_peaks_epochs` - Cell array of indices for b peaks (the systolic peak).
+  * `e_peaks_epochs` - Cell array of indices for e peaks (early diastolic phase).
 * **Outputs**:
-  * ‘features_table’ - A table containing aggregated features for each epoch, such as mean and standard deviation of the differences and ratios derived from the second derivatives at a, b, and e points.
+  * `features_table` - A table containing aggregated features for each epoch, such as mean and standard deviation of the differences and ratios derived from the second derivatives at a, b, and e points.
 * **Process**:
   * Iteratively processes each epoch of PPG data to extract meaningful APG features.
   * Computes first and second derivatives of the PPG signal for dynamic analysis.
@@ -110,12 +110,12 @@
 ### [extractPPGTDFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGTDFeatures.m)
 * **Purpose**: Provides a detailed analysis of time-domain features from PPG data. The function computes a variety of metrics that provide insights into the waveform's properties such as variability, central tendency, dispersion, and shape, which are indicative of underlying cardiovascular dynamics.
 * **Inputs**:
-  * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * ‘detected_peaks’ - Cell array containing detected peaks for each epoch.
-  * ‘detected_onsets’ - Cell array containing detected onsets for each epoch.
-  * ‘fs’ - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `detected_peaks` - Cell array containing detected peaks for each epoch.
+  * `detected_onsets` - Cell array containing detected onsets for each epoch.
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  * ‘features_table’ - MATLAB table with one row per epoch and columns for each calculated feature, including statistical summaries and variability metrics.
+  * `features_table` - MATLAB table with one row per epoch and columns for each calculated feature, including statistical summaries and variability metrics.
 * **Process**:
   * Iterates through each epoch to calculate a wide range of time-domain features.
   * Computes min and max values within the PPG signal to understand signal amplitude.
@@ -131,15 +131,15 @@
   * Outputs a features table with calculated metrics for each epoch.
 * **Dependencies**:
   * Accurate detection of systolic peaks and onsets prior to using this function.
-  * MATLAB’s base functionality for numerical operations and the Statistics Toolbox for advanced statistical calculations.
+  * MATLAB`s base functionality for numerical operations and the Statistics Toolbox for advanced statistical calculations.
 
 ### [extractPPGFDFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGFDFeatures.m)
 * **Purpose**: Provides a detailed analysis of frequency-domain features from PPG data. 
 * **Inputs**:
-  * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * ‘fs’ - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  * ‘mergedTable’ - MATLAB table combining all frequency-domain features calculated across various defined and literature-based frequency bands.
+  * `mergedTable` - MATLAB table combining all frequency-domain features calculated across various defined and literature-based frequency bands.
 * **Process**:
   * Adopts spectral analysis techniques based on studies like Wu et al. (2020), Olsen et al. (2023), Ucar et al. (2018), and Bozkurt et al.
   * Segments the frequency spectrum into defined bands to capture various aspects of HRV and cardiovascular dynamics.
@@ -154,25 +154,25 @@
 ### [extractPPGWTFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGFDFeatures.m)
 * **Purpose**: Automates the extraction of wavelet transform features from preprocessed PPG data, employing a symlet wavelet to analyze the signal at multiple scales. This approach is useful in identifying intrinsic patterns and anomalies in PPG data that are often indicative of physiological states and cardiovascular health.
 * **Inputs**:
-  * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * ‘fs’ - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  * ‘featuresTable’ - MATLAB table containing wavelet-derived features including energy, mean, standard deviation, and variance at various decomposition levels, along with approximation features.
+  * `featuresTable` - MATLAB table containing wavelet-derived features including energy, mean, standard deviation, and variance at various decomposition levels, along with approximation features.
 * **Process**:
  * Utilizes the 'sym6' symlet wavelet for its balance of smoothness and symmetry, ideal for PPG signal analysis.
  * Conducts multilevel wavelet decomposition to analyze PPG signals across different frequency scales.
  * Extracts detail coefficients at higher frequency levels to capture transient signal characteristics.
- * Analyzes approximation coefficients at each level to represent the signal’s underlying trend.
+ * Analyzes approximation coefficients at each level to represent the signal`s underlying trend.
  * Calculates statistical features including energy, mean, standard deviation, and variance from wavelet coefficients.
  * Ensures that both frequency content and signal variability are captured, providing a comprehensive understanding of the physiological implications.
 
 ### [extractPPGIMFFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGFDFeatures.m)
 * **Purpose**: Extracts a detailed set of features from the first intrinsic mode function (IMF) of PPG data. The features include instantaneous attributes (amplitude, frequency, phase) and statistical metrics, providing a thorough analysis of the signal's physiological information content.
 * **Inputs**:
-  * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * ‘fs’ - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  * ‘featuresTable’ - A MATLAB table containing various computed features for each epoch.
+  * `featuresTable` - A MATLAB table containing various computed features for each epoch.
 * **Process**:
   * Employs empirical mode decomposition (EMD) to decompose the PPG signal into multiple IMFs, focusing on the first for feature extraction.
   * Applies the Hilbert transform to the first IMF to derive instantaneous amplitude, frequency, and phase, alongside other derived statistical features.
@@ -182,10 +182,10 @@
 ### [extractPPGEntropyFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGFDFeatures.m)
 * **Purpose**: Analyzes the complexity and regularity of PPG data across epochs using various entropy measures. This function helps in understanding the physiological implications hidden in PPG signals, which are crucial for diagnosing and monitoring cardiovascular health.
 * **Inputs**:
-  * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * ‘fs’ - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  * ‘featuresTable’ - A MATLAB table with rows corresponding to epochs of PPG data. Each row contains entropy measures for the epoch, offering insights into the signal’s complexity and physiological dynamics.
+  * `featuresTable` - A MATLAB table with rows corresponding to epochs of PPG data. Each row contains entropy measures for the epoch, offering insights into the signal`s complexity and physiological dynamics.
 * **Process**:
   * Computes Approximate Entropy, Sample Entropy, Fuzzy Entropy, and Permutation Entropy using predefined parameters. These measures assess the predictability and disorder in PPG signal fluctuations, providing insights into heart rate variability and other physiological dynamics.
   * Utilizes parallel computing to enhance computational efficiency, particularly beneficial when processing large datasets.
@@ -200,23 +200,23 @@
 ### [extractPPGRRandDET.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGRRandDET.m)
 * **Purpose**: To compute recurrence-based metrics from Peak-to-Peak Interval (PPI) data derived from Photoplethysmography (PPG) signals. This analysis helps in understanding the underlying physiological states and their predictability through Recurrence Rate (RR) and Determinism (DET).
 * **Inputs**:
- * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- * ‘fs’ - Sampling rate of the PPG signal.
+ * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+ * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
- * ‘featuresTable’ - A table containing RR and DET measures for each epoch, aiding further analysis like trend identification or anomaly detection in physiological signals.
+ * `featuresTable` - A table containing RR and DET measures for each epoch, aiding further analysis like trend identification or anomaly detection in physiological signals.
 * **Process**:
  * **Recurrence Rate (RR)**: Measures the proportion of points in a recurrence plot where the signal revisits a state, reflecting the overall frequency of recurrent states within the signal.
  * **Determinism (DET**): Analyzes the predictability and regularity of the time series by identifying the proportion of recurrent points that form diagonal lines in the recurrence plot, which indicates deterministic structures in the signal dynamics.
 * **Dependencies**:
- * [‘calculateRRandDet.m’](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/calculateRRandDet.m): A custom function that computes the Recurrence Plot (RP) along with RR and DET metrics based on predefined thresholds and minimum line lengths. Details are available in the custom function file.
+ * [`calculateRRandDet.m`](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/calculateRRandDet.m): A custom function that computes the Recurrence Plot (RP) along with RR and DET metrics based on predefined thresholds and minimum line lengths. Details are available in the custom function file.
 
 ### [extractPPGLcHfdKfdFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPGLcHfdKfdFeatures.m)
 * **Purpose**: This function extracts key dynamical and fractal metrics from Photoplethysmogram (PPG) signals to analyze physiological signals' complexity and chaotic behavior. Metrics extracted include the Lyapunov exponent, Higuchi fractal dimension, and Katz fractal dimension.
 * **Inputs**:
- * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- * ‘fs’ - Sampling rate of the PPG signal.
+ * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+ * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
- * ‘featuresTable’ - Table containing the calculated features for each epoch, enabling further analysis of signal characteristics.
+ * `featuresTable` - Table containing the calculated features for each epoch, enabling further analysis of signal characteristics.
 * **Process**:
  * **Lyapunov Exponent (LC)**: Measures the rate of divergence of closely related trajectories in the signal, providing insight into the chaotic nature of the physiological system.
  * **Higuchi Fractal Dimension (HFD)**: Estimates the fractal dimension of the signal using a time-domain approach, reflecting the complexity.
@@ -230,11 +230,11 @@ Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Avail
 ### [extractPPITDFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPITDFeatures.m)
 * **Purpose**: Extracts a comprehensive set of features from PPG peak-to-peak intervals, focusing on heart rate variability (HRV) metrics, statistical summaries, and advanced analysis like geometric and non-linear features. These features are critical for studies involving cardiovascular health, stress analysis, and other medical applications.
 * **Inputs**:
-  * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * ‘detected_peaks’ - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
-  * ‘fs’ - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `detected_peaks` - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  * ‘featuresTable’ - MATLAB table containing extracted features, with one row per epoch and columns labeled according to each feature.
+  * `featuresTable` - MATLAB table containing extracted features, with one row per epoch and columns labeled according to each feature.
 * **Process**:
   * Utilizes time intervals between consecutive PPG peaks to compute traditional HRV metrics (e.g., RMSSD, SDNN) and advanced features such as Teager energy and non-linear dynamics.
   * Employs statistical methods to provide a detailed description of interval variability and dynamics.
@@ -261,11 +261,11 @@ Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Avail
 ### [extractPPIEntropyFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPIEntropyFeatures.m)
 * **Purpose**: To calculate multiple entropy metrics from PPI of PPG data, offering insights into the complexity and predictability of heart rate variations.
 * **Inputs**:
-  * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-  * ‘detected_peaks’ - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
-  * ‘fs’ - Sampling rate of the PPG signal.
+  * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+  * `detected_peaks` - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
+  * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
-  * ‘featuresTable’ - Table containing various entropy metrics per epoch.
+  * `featuresTable` - Table containing various entropy metrics per epoch.
 * **Process**:
   * Computes Approximate Entropy, Sample Entropy, Fuzzy Entropy, and Permutation Entropy to assess signal regularity and complexity.
   * Parameters such as embedding dimension and tolerance are tailored based on typical physiological data ranges and variability.
@@ -281,17 +281,17 @@ Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures. Avail
 ### [extractPPIvgFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/extractPPIEntropyFeatures.m)
 * **Purpose**: Analyzes Peak-to-Peak Intervals (PPI) derived from photoplethysmogram (PPG) signals through visibility graph analysis. 
 * **Inputs**:
- * ‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
- * ‘detected_peaks’ - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
- * ‘fs’ - Sampling rate of the PPG signal.
+ * `data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+ * `detected_peaks` - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
+ * `fs` - Sampling rate of the PPG signal.
 * **Outputs**:
- * ‘featuresTable’ - a table containing graph-based metrics for each epoch, offering a structured way to analyze and interpret the complexity of PPI data across different conditions or time frames.
+ * `featuresTable` - a table containing graph-based metrics for each epoch, offering a structured way to analyze and interpret the complexity of PPI data across different conditions or time frames.
 * **Process**:
-  * **Visibility Graph Construction**: Converts PPI sequences into visibility graphs using the ‘fast_NVG’ and ‘NVG_alg’ functions. These graphs illustrate the natural visibility between points in the time series, encapsulating the dynamic structure and potential predictors of physiological states.
+  * **Visibility Graph Construction**: Converts PPI sequences into visibility graphs using the `fast_NVG` and `NVG_alg` functions. These graphs illustrate the natural visibility between points in the time series, encapsulating the dynamic structure and potential predictors of physiological states.
   * **Graph Feature Extraction**: Computes various metrics from the visibility graphs such as node degrees, clustering coefficients, and path lengths using the `graphProperties` function. These metrics provide a quantitative assessment of the graph's topology and efficiency.
 **Dependencies**:
-  * ‘fast_NVG’ and ‘NVG_alg’: Custom MATLAB functions by Giovanni Iacobello for constructing and processing visibility graphs. These functions are pivotal for transforming time series data into a graph format that reflects the natural visibility among data points.
-  * ‘graphProperties’: A MATLAB function that computes characteristic path length, global efficiency, and clustering coefficients among other properties from a given graph's adjacency matrix, developed by Nathan D. Cahill.
+  * `fast_NVG` and `NVG_alg`: Custom MATLAB functions by Giovanni Iacobello for constructing and processing visibility graphs. These functions are pivotal for transforming time series data into a graph format that reflects the natural visibility among data points.
+  * `graphProperties`: A MATLAB function that computes characteristic path length, global efficiency, and clustering coefficients among other properties from a given graph's adjacency matrix, developed by Nathan D. Cahill.
 **References**:
  * [Giovanni Iacobello (2024). Fast natural visibility graph (NVG) for MATLAB](https://www.mathworks.com/matlabcentral/fileexchange/70432-fast-natural-visibility-graph-nvg-for-matlab), MATLAB Central File Exchange. Retrieved April 16, 2024.
   * Nathan D. Cahill, "Graph properties function," available on GitHub under [NetworkTopologyvsFlowVulnerability repository](https://github.com/Roberock/NetworkTopologyvsFlowVulnerbaility/blob/master/graphProperties.m), accessed April 12, 2024.
@@ -309,12 +309,12 @@ Progressive and Windowed DFA: Analyzes segments and windows of PPI data to deter
 DMA Analysis: Implements Detrended Moving Average analysis to provide another perspective on the fractal nature of the time series by examining average fluctuations at various scales.
 
 Inputs:
-‘data’ - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
-‘fs’ - Sampling rate of the PPG signal.
-‘detected_peaks’ - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
+`data` - Matrix of PPG signal data, with each column representing an epoch (first row contains labels).
+`fs` - Sampling rate of the PPG signal.
+`detected_peaks` - Cell array containing detected peaks for each epoch, used to compute peak-to-peak intervals.
 
 Outputs:
-‘featuresTable’ - A table containing the calculated features for each epoch, which includes measures such as the Higuchi Fractal Dimension, various DFA indices, and more. This table facilitates further statistical analysis or machine learning applications.
+`featuresTable` - A table containing the calculated features for each epoch, which includes measures such as the Higuchi Fractal Dimension, various DFA indices, and more. This table facilitates further statistical analysis or machine learning applications.
 
 
 Dependencies:
