@@ -111,7 +111,7 @@ function featuresTable = extractPPITDFeatures(data, detected_peaks, fs)
         PPI_Signtest_h = h;
     
         % Normality tests
-        [p1, h1] = kstest(PPI);
+        [h1, p1] = kstest(PPI);
         PPI_Normalitytest_p = p1;
         PPI_Normalitytest_h = h1;
     
