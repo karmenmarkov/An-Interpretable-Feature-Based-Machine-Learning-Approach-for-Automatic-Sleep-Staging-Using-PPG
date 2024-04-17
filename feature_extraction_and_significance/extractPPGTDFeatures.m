@@ -182,23 +182,6 @@ function featuresTable = extractPPGTDFeatures(data, detected_peaks, detected_ons
         % 3. Compute CCM
         PPG_CCM = CCM_sum / (n - 2) / Cn; % Normalize by the number of triangles and Cn
 
-        % Lyapunov exponent of PPG signal - time-consuming, add later
-        %PPG_LC = lyapunovExponent(epochData, fs);
-    
-        % Higuchi fractal dimension of PPG signal - time-consuming, add later
-        %epoch_transposed = epochData.';
-        %PPG_HFD = Higuchi_FD(epoch_transposed, 100); 
-    
-        % Katz fractal dimension of PPG signal  - time-consuming, add later
-        %PPG_KFD = Katz_FD(epoch_transposed);
-
-        % Pulse contour characteristic value mean
-        %PPG_K_avg - too complicated, need blood pressure values
-    
-        % Pulse contour characteristic value std
-        %PPG_K_std - too complicated, need blood pressure values
-
-
         % Assign the calculated features for the current epoch to the preallocated matrix
         features_all_epochs(epoch,:) = [PPG_Min, PPG_MAD, PPG_TM25, PPG_TM50, PPG_avgCL, PPG_avgE, PPG_Max, PPG_Mean, PPG_Range, PPG_SD, PPG_Median, PPG_avgAD, PPG_CM, PPG_RMSSD, PPG_RMS, PPG_SE, PPG_Signtest_p, PPG_Signtest_h, PPG_Q10, PPG_Q25, PPG_Q75, PPG_Q90, PPG_CoV, PPG_SDSD, PPG_SPV, PPG_Var, PPG_stdAD, PPG_Ymax, PPG_Ymin, PPG_avgTe, PPG_SD1, PPG_SD2, PPG_RSD1SD2, PPG_kurt, PPG_skew, PPG_IQR, PPG_SF, PPG_HaM, PPG_GM, PPG_Ha, PPG_Hm, PPG_Hc, PPG_SVD, PPG_CCM];
     end
