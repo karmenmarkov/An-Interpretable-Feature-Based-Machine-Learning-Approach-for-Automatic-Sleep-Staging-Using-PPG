@@ -91,7 +91,7 @@ function featuresTable = extractPPGTDFeatures(data, detected_peaks, detected_ons
         ppgIntervalDiffs = diff(ppgIntervals); % Successive differences between intervals
         PPG_SDSD = std(ppgIntervalDiffs);
     
-        % SPV - The maximum value of the systolic peak in one PPG cycle
+        % SPV - The maximum value of the systolic peak in epoch
         PPG_SPV = max(epochData(S_peaks));
     
         % Variance of PPG signal
