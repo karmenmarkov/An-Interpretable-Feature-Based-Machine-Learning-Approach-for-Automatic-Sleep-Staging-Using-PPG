@@ -26,6 +26,9 @@ The dataset is prepared for model training and evaluation:
 ## Balancing the Dataset
 The class distribution in the dataset is imbalanced, with a significant difference between the number of wake and sleep instances. This imbalance is addressed during model training and evaluation using various techniques for balancing the classes. Different balanced datasets are created using the following methods:
 
+* No balancing:
+ * Dataset: [df_2_stages_None.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_2_stages_None.ipynb)
+ * Method: The dataset is used as-is without any balancing.
 * ADASYN:
   * Dataset: [df_2_stages_ADASYN.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_2_stages_ADASYN.ipynb)
   * Method: Adaptive Synthetic Sampling (ADASYN) is used to generate synthetic samples for the minority class. This technique adaptively generates more synthetic data for minority class instances that are harder to learn, thus improving the classifier's performance on imbalanced datasets.
@@ -74,4 +77,44 @@ Feature importance is calculated for each cross-validation strategy and averaged
 * Average Importances: Calculate the mean importance across different cross-validation methods.
 * Visualization: Plot the top 20 most important features based on their averaged importance.
 * Feature Distribution: Plot histograms and boxplots for the top-performing features to visualize their distribution across different classes (wake and sleep).
+
+
+# Multistage classification
+
+## Correlation Analysis
+Same as for 2-stage classification.
+
+## Preparing X, y, and Groups
+Same as for 2-stage classification.
+
+## Balancing the Dataset
+The class distribution in the dataset is imbalanced. Different techniques are used to balance the classes:
+
+* No Balancing:
+ * Dataset: [df_3_stages_None.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_3_stages_None.ipynb), [df_4_stages_None.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_4_stages_None.ipynb), [df_5_stages_None.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_5_stages_None.ipynb)
+ * Method: The dataset is used as-is without any balancing.
+* Random Under-Sampling (RUS):
+ * Dataset: [df_3_stages_RUS.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_3_stages_RUS.ipynb), [df_4_stages_RUS.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_4_stages_RUS.ipynb), [df_5_stages_RUS.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_5_stages_RUS.ipynb)
+ * Method: Random Under-Sampling (RUS) is used with default settings. This technique randomly removes instances from the majority class to balance the class distribution.
+* SMOTE:
+ * Dataset: [df_3_stages_SMOTE.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_3_stages_SMOTE.ipynb), [df_4_stages_SMOTE.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_4_stages_SMOTE.ipynb), [df_5_stages_SMOTE.ipynb](https://github.com/kmarkoveth/PPG/blob/main/model_training/df_5_stages_SMOTE.ipynb)
+ * Method: Synthetic Minority Over-sampling Technique (SMOTE) is used with default settings. SMOTE generates synthetic samples by interpolating between existing minority class instances.
+
+## Feature Selection
+Same as for 2-stage classification.
+
+## Hyperparameter Tuning
+Same as for 2-stage classification.
+
+## Model Training
+Same as for 2-stage classification.
+
+## Overall Feature Importance Analysis
+Feature importance is calculated for each cross-validation strategy using a one-vs-all approach and averaged to determine the overall importance of features. This involves:
+
+* **One-vs-All Model for Feature Importances:** Using OneVsRestClassifier with a Random Forest classifier, train a separate model for each stage where that stage is treated as the positive class and all other stages are treated as the negative class. For each model, extract the feature importances specific to that stage.
+* **Collect Feature Importances:** Extract feature importances from each cross-validation strategy using OneVsRestClassifier.
+* **Average Importances:** Calculate the mean importance across different cross-validation methods.
+* **Visualization:** Plot the top 5 features for each stage based on their averaged importance.
+* **Feature Distribution:** Plot histograms and boxplots for the top-performing features to visualize their distribution across different classes.
 
