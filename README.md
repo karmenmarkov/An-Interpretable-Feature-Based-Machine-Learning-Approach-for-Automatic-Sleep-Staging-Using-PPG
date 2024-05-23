@@ -61,4 +61,4 @@ This project was supervised by Dr. Mohamed Elgendi, whose expertise and guidance
 
 ## Contact Info
 
-If you have any questions about the code, please contact Karmen and Dr. Elgendi at moe.elgendi@gmail.com via email
+If you have any questions about the code, please contact Karmen at kkarmenmarkov@gmail.com and Dr. Elgendi at moe.elgendi@gmail.com via email
