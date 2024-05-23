@@ -59,7 +59,6 @@ To use this repository:
 ## Acknowledgements
 This project was supervised by Dr. Mohamed Elgendi, whose expertise and guidance were instrumental in the research and development of the methodologies used. We thank all contributors and participants of the CAP Sleep Database.
 
-## Acknowledgements
+## Contact Info
 
-ChatGPT
 If you have any questions about the code, please contact Karmen and Dr. Elgendi at moe.elgendi@gmail.com via email
