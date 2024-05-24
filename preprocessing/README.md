@@ -1,6 +1,9 @@
 # Preprocessing Steps
 The preprocessing phase lays the groundwork for all subsequent analysis by transforming raw data into a refined form ready for in-depth examination. Below is a step-by-step breakdown of each script used in the preprocessing workflow, detailing their purposes, inputs, outputs, and the processes they entail. Each script is a critical piece in preparing the dataset for robust and accurate sleep stage classification.
 
+![github1](https://github.com/kmarkoveth/PPG/assets/103241042/2bc54a3e-c641-4d14-9456-a977bace7d7b)
+
+
 ## Steps
 ### [restructure_labels.py](https://github.com/kmarkoveth/PPG/blob/main/preprocessing/restructure_labels.py)
 * **Purpose**: Transforms sleep stage labels from raw `.txt` files into structured ’.csv’ format suitable for analysis. 
