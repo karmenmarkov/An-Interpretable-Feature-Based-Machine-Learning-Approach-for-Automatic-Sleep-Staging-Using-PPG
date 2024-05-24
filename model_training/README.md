@@ -1,8 +1,13 @@
 # Overview
 This repository contains the training of models for sleep stage classification. The primary stages of this project include correlation analysis, feature selection, hyperparameter tuning, model training with cross-validation, and feature importance analysis. Below is a detailed description of each step involved in the process.
 
+![github3](https://github.com/kmarkoveth/PPG/assets/103241042/b704e564-f79a-4f8e-a1ef-b9f5f73e01ad)
+
 
 # 2-stage classification
+
+## Input
+* 2_stage dataframe from feature_significance.py file where rows are epochs and columns are features, labels, and subjectID.
 
 ## Correlation Analysis
 We start by performing a correlation analysis on the dataset to identify and remove highly correlated features. The steps include:
