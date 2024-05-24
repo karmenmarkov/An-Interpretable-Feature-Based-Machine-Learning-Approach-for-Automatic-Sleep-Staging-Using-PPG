@@ -3,8 +3,33 @@ The following section details the systematic methods employed for extracting sig
 
 ![github2](https://github.com/kmarkoveth/PPG/assets/103241042/98094b6d-f65e-4c03-977e-2670e28568db)
 
-## Functions
-The suite of functions and scripts listed below encompasses a comprehensive framework for extracting features across multiple dimensions - temporal, spectral, and non-linear, among others - and evaluating their significance in the context of sleep staging. 
+## Main function
+### [ExtractAllFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/ExtractAllFeatures.m)
+* **Purpose**: Automates extraction of diverse physiological and statistical features from PPG data, essential for sleep stage classification and health monitoring.
+* **Inputs**:
+  * Directory with preprocessed and cleaned PPG data in .csv format.
+* **Outputs**:
+  * `featuresTable` - A comprehensive dataset with extracted features for each epoch.
+  * Processed `.csv` files - Ready for analysis or machine learning model integration.
+  * Log of failed files - Documenting any epochs that could not be processed.
+* **Process**:
+  * Temporal dynamics from PPG waveforms.
+  * Spectral content via frequency and wavelet analyses.
+  * Heart rate variability metrics from PPI analysis.
+  * Complexity and regularity from entropy calculations.
+  * Structural insights through graph-based metrics.
+* **Dependencies**:
+  * MATLAB (R2021a or later recommended)
+  * Signal Processing Toolbox
+  * Statistics and Machine Learning Toolbox
+  * Custom MATLAB Functions: A suite of specialized functions developed to extract each set of features. 
+* **Instructions**:
+  * Ensure the script and all custom function scripts are in the MATLAB path.
+  * Place preprocessed .csv data files in the specified input directory.
+  * Execute the script from MATLAB command window or editor to process data and generate features.
+
+## Sub-functions
+The suite of functions and scripts listed below encompasses a comprehensive framework for extracting features across multiple dimensions - temporal, spectral, and non-linear, among others in the context of sleep staging. 
 
 ### [detectPeaksOnsets.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/detectPeaksOnsets.m)
 * **Purpose**: Detects peaks and onsets in PPG signal data using the `MSPTD` beat detector from the PPG_Beats toolbox. Essential for preprocessing PPG signals in preparation for further analysis or feature extraction.
@@ -319,30 +344,7 @@ The suite of functions and scripts listed below encompasses a comprehensive fram
 * **References**:
   * Jesús Monge-Álvarez (2024). Higuchi and Katz fractal dimension measures,MATLAB Central File Exchange. Retrieved April 12, 2024.[Access here](https://www.mathworks.com/matlabcentral/fileexchange/50290-higuchi-and-katz-fractal-dimension-measures)
 
-### [ExtractAllFeatures.m](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/ExtractAllFeatures.m)
-* **Purpose**: Automates extraction of diverse physiological and statistical features from PPG data, essential for sleep stage classification and health monitoring.
-* **Inputs**:
-  * Directory with preprocessed and cleaned PPG data in .csv format.
-* **Outputs**:
-  * `featuresTable` - A comprehensive dataset with extracted features for each epoch.
-  * Processed `.csv` files - Ready for analysis or machine learning model integration.
-  * Log of failed files - Documenting any epochs that could not be processed.
-* **Process**:
-  * Temporal dynamics from PPG waveforms.
-  * Spectral content via frequency and wavelet analyses.
-  * Heart rate variability metrics from PPI analysis.
-  * Complexity and regularity from entropy calculations.
-  * Structural insights through graph-based metrics.
-* **Dependencies**:
-  * MATLAB (R2021a or later recommended)
-  * Signal Processing Toolbox
-  * Statistics and Machine Learning Toolbox
-  * Custom MATLAB Functions: A suite of specialized functions developed to extract each set of features. 
-* **Instructions**:
-  * Ensure the script and all custom function scripts are in the MATLAB path.
-  * Place preprocessed .csv data files in the specified input directory.
-  * Execute the script from MATLAB command window or editor to process data and generate features.
-
+## Feature significance
 ### [feature_significance.py](https://github.com/kmarkoveth/PPG/blob/main/feature_extraction_and_significance/feature_significance.py)
 * **Purpose**: This script processes PPG signal data extracted into feature sets to evaluate statistical significance across different sleep stage classifications. It automates the assessment of feature relevance in distinguishing between wake, NREM, and REM sleep stages using various statistical tests.
 * **Inputs**:
