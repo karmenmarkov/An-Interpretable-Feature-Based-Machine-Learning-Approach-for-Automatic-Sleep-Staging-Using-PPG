@@ -50,9 +50,18 @@ Enhance clinical applicability of sleep stage detection using non-invasive PPG s
 
 ## Dependencies
 * MATLAB (R2021a or later recommended)
+  * Additional toolboxes and custom functions are listed in specific READMEs linked above.
 * Python 3.8+
-* Libraries: numpy, pandas, scikit-learn, scipy
-* Additional toolboxes and custom functions are listed in specific READMEs linked above.
+  * pandas==1.3.3
+  * numpy==1.21.2
+  * scipy==1.7.1
+  * statsmodels==0.12.2
+  * scikit-posthocs==0.6.7
+  * seaborn==0.11.2
+  * matplotlib==3.4.3
+  * scikit-learn==0.24.2
+  * imbalanced-learn==0.8.0
+  * pyedflib==0.1.36
 
 ## Usage
 To use this repository:
