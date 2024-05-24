@@ -39,6 +39,9 @@ This repository is organized into three main sections, each with a dedicated REA
 * **Preprocessing**: Scripts for data cleaning, signal inversion, and synchronization of PPG signals with sleep stage labels. [Read more](https://github.com/kmarkoveth/PPG/tree/main/preprocessing)
 * **Feature Extraction and Significance**: Techniques for deriving significant features from the PPG data and evaluating their relevance to sleep stages. [Read more](https://github.com/kmarkoveth/PPG/tree/main/feature_extraction_and_significance)
 * **Model Training**: Application of machine learning models to classify sleep stages based on extracted features. Read more
+* 
+![Blank diagram](https://github.com/kmarkoveth/PPG/assets/103241042/793f5de5-cc5e-40a0-bd72-e19716ae60f7)
+
 
 ## Goals and Objectives
 Extract and analyze features from PPG data that significantly impact sleep stage classifications.
