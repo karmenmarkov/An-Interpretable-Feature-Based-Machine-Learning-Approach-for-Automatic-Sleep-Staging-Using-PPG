@@ -7,7 +7,7 @@ This repository contains the training of models for sleep stage classification. 
 # 2-stage classification
 
 ## Input
-* 2_stage dataframe from feature_significance.py file where rows are epochs and columns are features, labels, and subjectID.
+* '2_stages.csv' file from [feature_significance.ipynb](https://github.com/kmarkoveth/PPG/blob/main/feature_extractionand_significance/feature_significance.ipynb), which is a dataframe where rows are epochs and columns are features, labels, and subjectID.
 
 ## Correlation Analysis
 We start by performing a correlation analysis on the dataset to identify and remove highly correlated features. The steps include:
@@ -85,6 +85,9 @@ Feature importance is calculated for each cross-validation strategy and averaged
 
 
 # Multistage classification
+
+## Input
+* '3_stages.csv', '4_stage.csv' and '5_stage.csv' files from [feature_significance.ipynb](https://github.com/kmarkoveth/PPG/blob/main/feature_extractionand_significance/feature_significance.ipynb), which are dataframes where rows are epochs and columns are features, labels, and subjectID.
 
 ## Correlation Analysis
 Same as for 2-stage classification.
