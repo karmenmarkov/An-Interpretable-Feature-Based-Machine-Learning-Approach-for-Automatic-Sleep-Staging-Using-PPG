@@ -1,6 +1,8 @@
 # Feature extraction and significance
 The following section details the systematic methods employed for extracting significant features from Photoplethysmogram (PPG) data. These features are pivotal for further applications in sleep stage classification. The significance analysis ensures that the features used in predictive models are statistically relevant.
 
+![github2](https://github.com/kmarkoveth/PPG/assets/103241042/98094b6d-f65e-4c03-977e-2670e28568db)
+
 ## Functions
 The suite of functions and scripts listed below encompasses a comprehensive framework for extracting features across multiple dimensions - temporal, spectral, and non-linear, among others - and evaluating their significance in the context of sleep staging. 
 
