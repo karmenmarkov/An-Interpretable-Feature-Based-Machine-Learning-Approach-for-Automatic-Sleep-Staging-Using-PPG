@@ -1,4 +1,4 @@
-# Automatic Sleep Staging from Photoplethysmography (PPG) Data
+# An Interpretable Feature-Based Machine Learning Approach for Automatic Sleep Staging Using PPG
 
 
 ## Project Overview
